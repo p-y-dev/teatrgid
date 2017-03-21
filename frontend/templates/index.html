@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+
+{% load staticfiles %}
+
+{% block title %}Главная{% endblock %}
+
+{% block styles %}
+    {{ block.super }}
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ test }}</h1>
+{% endblock %}

@@ -1,0 +1,10 @@
+{
+    "name": "DjangoProject",
+    "version": "0.0.1",
+    "dependencies": {
+        "jquery": "3.1.1",
+        "bootstrap": "3.3.7",
+        "font-awesome": "latest",
+        "tinymce": "latest"
+    }
+}
