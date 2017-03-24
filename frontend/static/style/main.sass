@@ -1,2 +1,97 @@
-h1
-    color: #2aabd2
+@import "colors.sass"
+@import "fonts.sass"
+
+@mixin placeholder
+  &::-moz-placeholder
+    @content
+  &::-webkit-input-placeholder
+    @content
+  &:-ms-input-placeholder
+    @content
+
+
+@mixin placeholder-search
+    font-family: "GothamProRegular"
+    font-size: 18px
+    color: #818181
+
+header
+    height: 220px
+    background-color: $white
+
+    .account
+        margin-top: 75px
+        float: left
+
+        &__link-account
+            font-family: "GothamProRegular"
+            font-size: 18px
+            color: $light-gray
+            text-decoration: none !important
+
+            .img-arrow
+                margin-left: 10px
+
+    .logo
+        position: absolute
+        width: 264px
+        left: 50%
+        margin-left: -132px
+        margin-top: 50px
+
+
+    .search
+        margin-top: 60px
+        float: right
+
+        #search-form input
+            &[type="text"]
+                width: 250px
+                height: 40px
+                padding-top: 9px
+                padding-left: 15px
+                border: 1px solid #efeded
+                border-radius: 50px 0 0 50px
+                outline: none
+                margin-right: -5px
+
+                @include placeholder-search
+
+        #search-form button
+            height: 40px
+            width: 50px
+            border: 1px solid #efeded
+            border-left: none
+            border-radius: 0 50px 50px 0
+            outline: none
+            background-color: #f0f0f0
+            transition: .3s
+
+            .fa-search
+                color: #62a6be
+                font-size: 18px
+
+            &:active, &:hover, &:focus, &:visited
+                background-color: #e6e6e6
+
+    .menu
+        margin-top: 75px
+        padding: 4px
+
+        &__item
+            display: inline
+            margin-right: 90px
+            padding-bottom: 10px
+            border-bottom: 10px solid #FFFFFF
+            transition: .3s
+
+            &:active, &:hover, &:focus, &:visited
+                border-bottom: 10px solid $orange
+
+            a
+                font-family: "GothamProRegular"
+                text-transform: uppercase
+                font-size: 18px
+                color: #393939
+                text-decoration: none !important
+                padding-bottom: 20px

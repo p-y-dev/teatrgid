@@ -1,0 +1,59 @@
+{% load staticfiles %}
+
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="account">
+                <a href="#" class="account__link-account">
+                    <img src="{% static "images/icons/user.png" %}">&nbsp;
+                    Мой ТеатрГид<img class="img-arrow" src="{% static "images/icons/arrow-down.png" %}">
+                </a>
+            </div>
+
+            <div class="logo">
+                <a href="{% url "home" %}">
+                    <img class="img-responsive" src="{% static "images/logo/logo.png" %}">
+                </a>
+            </div>
+
+            <div class="search">
+                <form id="search-form" class="form-inline" method="get">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="search-value" placeholder="Поиск">
+                    </div>
+                    <button type="submit" class="btn btn-default">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <ul class="menu">
+                <li class="menu__item">
+                    <a href="#">Афиша</a>
+                </li>
+
+                <li class="menu__item">
+                    <a href="#">Билеты</a>
+                </li>
+
+                <li class="menu__item">
+                    <a href="#">Рекомендуют</a>
+                </li>
+
+                <li class="menu__item">
+                    <a href="#">Спектакли</a>
+                </li>
+
+                <li class="menu__item">
+                    <a href="#">Колекции</a>
+                </li>
+
+                <li class="menu__item">
+                    <a href="#">За кулисами</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
