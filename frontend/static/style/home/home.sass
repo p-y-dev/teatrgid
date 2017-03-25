@@ -1,0 +1,227 @@
+@import "../colors.sass"
+@import "../fonts.css"
+
+@import "variable"
+
+.main-info
+    background-color: $dark-blue
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 80%)
+
+    &__today, &__soon, &__the_best-advice, &__news
+        height: $height-main-info-col
+        padding: 0px
+
+        @media(max-width: 1199px)
+            height: $height-main-info-col - 76px
+
+        @media(max-width: 991px)
+            height: $height-main-info-col - 76px - 73px
+
+        @media(max-width: 767px)
+            height: $height-main-info-col - 76px - 73px - 40px
+
+    &__today, &__soon, &__news
+        background-color: $dark-blue
+
+        .block
+            height: $height-main-info-img
+            overflow: hidden
+            position: relative
+            background-repeat: no-repeat
+            -moz-background-size: 100%
+            -webkit-background-size: 100%
+            -o-background-size: 100%
+            background-size: cover
+
+            .substrate
+                background-color: #000
+                width: 100%
+                height: 100%
+                position: absolute
+                opacity: .1
+                transition: .3s
+
+            @media(max-width: 1199px)
+                height: $height-main-info-img - 76px
+
+            @media(max-width: 991px)
+                height: $height-main-info-img - 76px - 74px
+
+            @media(max-width: 767px)
+                height: $height-main-info-img - 76px - 74px - 39px
+
+        .title, .title_soon
+            position: relative
+            height: $height-main-info-title
+
+            h2, a
+                position: absolute
+                color: $white
+
+            h2
+                font-family: "GothamProMedium"
+                font-size: 30px
+                margin: 10px 0px 0px 10px
+
+            a
+                font-family: "GothamProRegular"
+                font-size: 18px
+                margin: 50px 0px 0px 10px
+
+            @media(max-width: 1199px)
+                h2
+                    font-size: 24px
+
+                a
+                    font-size: 16px
+                    margin: 40px 0px 0px 10px
+
+            @media(max-width: 991px)
+                h2
+                    font-size: 20px
+
+                a
+                    font-size: 14px
+                    margin: 35px 0px 0px 10px
+
+            @media(max-width: 767px)
+                h2
+                    font-size: 16px
+
+                a
+                    font-size: 13px
+                    margin: 30px 0px 0px 10px
+
+        .title::after, .title_soon::after
+            content: ''
+            position: absolute
+            right: 35px
+            border: 10px solid transparent
+            z-index: 10
+
+            @media(max-width: 767px)
+                right: 10px
+
+        .title::after
+            bottom: -30px
+            border-top: 20px solid $dark-blue
+
+            @media(max-width: 767px)
+                bottom: -20px
+
+        .title_soon::after
+            top: -30px
+            border-bottom: 20px solid $dark-blue
+
+            @media(max-width: 767px)
+                top: -20px
+
+        &:active, &:hover, &:focus, &:visited
+                .substrate
+                    opacity: .3
+
+    &__the_best-advice
+        a
+            text-decoration: none !important
+
+            .block
+                height: $height-the_best-advice
+                overflow: hidden
+                position: relative
+                background-repeat: no-repeat
+                -moz-background-size: 100%
+                -webkit-background-size: 100%
+                -o-background-size: 100%
+                background-size: cover
+
+                .substrate
+                    background-color: #000
+                    width: 100%
+                    height: 100%
+                    position: absolute
+                    opacity: .5
+                    transition: .3s
+
+                @media(max-width: 1199px)
+                    height: $height-the_best-advice - 38px
+
+                @media(max-width: 991px)
+                    height: $height-the_best-advice - 38px - 37px
+
+                @media(max-width: 767px)
+                    height: $height-the_best-advice - 38px - 37px - 19px
+
+            .the_best, .advice
+                h2
+                    font-family: "GothamProMedium"
+                    position: relative
+                    color: $white
+                    margin: 10px 0px 0px 10px
+
+                @media(max-width: 1199px)
+                    h2
+                        font-size: 24px
+
+                @media(max-width: 991px)
+                    h2
+                        font-size: 20px
+
+                @media(max-width: 767px)
+                    h2
+                        font-size: 16px
+
+            .the_best
+                .category
+                    font-family: "GothamProMedium"
+                    position: relative
+                    font-size: 12px
+                    color: $white
+                    margin: 10px 0px 0px 10px
+
+            .advice
+                h2
+                    position: absolute
+                    bottom: 10px
+
+            &:active, &:hover, &:focus, &:visited
+                .substrate
+                    opacity: .7
+
+    @media(max-width: 767px)
+        &__the_best-advice
+            float: right
+
+        &__news
+            float: left
+
+.advertising
+    padding: 20px 20px
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%)
+    border: 1px solid #225061
+    margin-top: 20px
+    box-shadow: 0 0 2px #3a758a
+
+    a
+        font-family: "GothamProMedium"
+        text-transform: uppercase
+        color: $white
+        font-size: 25px
+
+        p
+            text-align: center
+            margin: 0px
+
+    @media(max-width: 991px)
+        padding: 15px 20px
+
+        a
+            font-size: 15px
+
+    @media(max-width: 767px)
+        padding: 10px 20px
+
+        a
+            font-size: 12px
+
+.filter
+    margin-top: 45px

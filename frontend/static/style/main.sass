@@ -1,5 +1,5 @@
 @import "colors.sass"
-@import "fonts.sass"
+@import "fonts.css"
 
 @mixin placeholder
   &::-moz-placeholder
@@ -119,7 +119,7 @@ header
                 display: inline
                 margin-right: 92px
                 padding-bottom: 5px
-                transition: .3s
+                transition: .2s
                 border-bottom: 5px solid $white
 
                 a
@@ -183,6 +183,9 @@ header
                 margin-right: 25px
                 font-size: 18px
                 margin-top: 15px
+
+    @media(max-width: 991px)
+        height: 160px
 
     @media(max-width: 767px)
         height: 50px
