@@ -1,7 +1,7 @@
 {% load staticfiles %}
 
 <header>
-    <div class="container">
+    <div class="container desktop-menu">
         <div class="row">
             <div class="account">
                 <a href="#" class="account__link-account">
@@ -55,5 +55,16 @@
                 </li>
             </ul>
         </div>
+    </div>
+
+    <div class="mobile-menu">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+        <a href="{% url "home" %}">
+            <img class="img-responsive logo" src="{% static "images/logo/logo.png" %}">
+        </a>
+        <a href="#" class="link-account">
+            <img src="{% static "images/icons/user.png" %}">
+        </a>
+        <img class="search" src="{% static "images/icons/search.png" %}">
     </div>
 </header>
