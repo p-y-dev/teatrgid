@@ -206,17 +206,50 @@
                 .substrate
                     opacity: .7
 
+    &__news
+        border-radius: 0px 0px 5px 0px
+        .block
+            border-radius: 0px 0px 5px 0px
+            .substrate
+               border-radius: 0px 0px 5px 0px
+
+    &__today
+        border-radius: 0px 0px 0px 5px
+        .block
+            border-radius: 0px 0px 0px 5px
+            .substrate
+               border-radius: 0px 0px 0px 5px
+
     @media(max-width: 767px)
         &__the_best-advice
             float: right
 
         &__news
             float: left
+            border-radius: 0px 0px 0px 5px
+            .block
+                border-radius: 0px 0px 0px 5px
+                .substrate
+                   border-radius: 0px 0px 0px 5px
 
+        &__today
+            border-radius: 0px 0px 0px 0px
+            .block
+                border-radius: 0px 0px 0px 0px
+                .substrate
+                   border-radius: 0px 0px 0px 0px
+
+        &__the_best-advice
+            border-radius: 0px 0px 5px 0px
+            .advice
+                border-radius: 0px 0px 5px 0px
+                .substrate
+                   border-radius: 0px 0px 5px 0px
 .advertising
     padding: 20px 20px
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%)
     border: 1px solid #225061
+    border-radius: 5px 5px 5px 5px
     margin-top: 20px
     box-shadow: 0 0 2px #3a758a
 
@@ -246,14 +279,41 @@
     margin-top: 45px
     padding: 0px 0px
 
-    &__row
-        padding: 0px 15px
+    .clear_desktop
+        display: block
+
+    .clear_mobile
+        display: none
 
     &__date, &__rating, &__age, &__theaters,
     &__genres, &__actors, &__directed
         position: relative
         float: left
         margin-left: 130px
+
+        @media(max-width: 1199px)
+            margin-left: 70px
+
+        @media(max-width: 991px)
+            margin-left: 20px
+
+    &__date, &__clear
+        @media(max-width: 991px)
+            input
+                height: 30px !important
+                font-size: 13px !important
+
+    &__rating, &__age, &__theaters,
+    &__genres, &__actors, &__directed
+        @media(max-width: 991px)
+            .bootstrap-select
+                height: 30px !important
+
+                .dropdown-toggle .filter-option
+                    font-size: 13px
+
+                ul li a
+                    font-size: 13px
 
     &__date
         margin-left: 0px
@@ -269,6 +329,16 @@
             &:hover
                 cursor: pointer
 
+        @media(max-width: 991px)
+            input
+                width: 105px !important
+                padding-left: 30px
+                height: 30px !important
+
+            img
+                width: 20px
+                left: 6px
+
     &__rating, &__age, &__clear
         p
             font-family: "GothamProMedium"
@@ -276,6 +346,9 @@
             color: $white
             font-size: 16px
             margin: 5px 0px 0px 0px
+
+            @media(max-width: 991px)
+                font-size: 13px
 
     &__rating, &__age
         .bootstrap-select
@@ -309,9 +382,57 @@
             margin-left: 10px !important
             width: 255px !important
 
+            @media(max-width: 1199px)
+                width: 205px !important
+
+            @media(max-width: 991px)
+                width: 165px !important
+
+        @media(max-width: 991px)
+            margin-left: 20px
+
     &__theaters
         margin-left: 0px !important
 
         .bootstrap-select
             margin-left: 0px !important
 
+
+    @media(max-width: 767px)
+        padding: 0px 15px
+        width: 320px
+        margin-left: -160px
+        left: 50%
+
+        .clear_desktop
+            display: none
+
+        .clear_mobile
+            display: block
+
+        &__date, &__rating, &__age, &__theaters, &__genres,
+        &__actors, &__directed, &__clear
+            position: relative
+            margin: 0px 0px 20px 0px
+
+        &__rating
+            margin-left: 27px
+
+        &__age .to
+            margin-left: 19px
+
+        &__age, &__theaters, &__genres,
+        &__actors, &__directed, &__clear
+            width: 100%
+
+            .bootstrap-select
+                margin: 0px 0px 0px 15px !important
+
+        &__clear
+            input, p
+                float: right
+
+        &__theaters, &__genres, &__actors, &__directed
+            .bootstrap-select
+                margin: 0px 0px 0px 0px !important
+                width: 290px !important

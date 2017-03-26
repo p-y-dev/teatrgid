@@ -97,7 +97,7 @@
                 <div class="col-xs-12 filter">
                     <form id="filter-form" method="get">
                         {% csrf_token %}
-                        <div class="row filter__row">
+                        <div class="filter__row">
                             <div class="filter__date">
                                 <input type="text" id="datepicker" disabled>
                             </div>
@@ -144,13 +144,13 @@
                                 </select>
                             </div>
 
-                            <div class="filter__clear">
+                            <div class="filter__clear clear_desktop">
                                 <p class="to">Сбросить</p>
                                 <input type="submit" value="">
                             </div>
                         </div>
 
-                        <div class="row filter__row">
+                        <div class="filter__row">
                             <div class="filter__theaters">
                                 <select name="theaters" id="theaters-filter" class="bts-select">
                                     <option>Театр</option>
@@ -194,6 +194,11 @@
                                     <option>Весник Евгений Яковлевич</option>
                                     <option>Визгов Михаил Алексеевич</option>
                                 </select>
+                            </div>
+
+                            <div class="filter__clear clear_mobile">
+                                <input type="submit" value="">
+                                <p class="to">Сбросить</p>
                             </div>
                         </div>
                     </form>
