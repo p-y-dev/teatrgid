@@ -1,0 +1,52 @@
+{% extends "main.html" %}
+
+{% load staticfiles %}
+
+{% block title %}ТеатрГид{% endblock %}
+
+{% block styles %}
+    {{ block.super }}
+    <link href="{% static 'packages/bootstrap-select/dist/css/bootstrap-select.css' %}" rel="stylesheet">
+    <link href="{% static 'packages/jquery-ui/jquery-ui.min.css' %}" rel="stylesheet">
+    <link href="{% static 'style/home/main-info.sass' %}" rel="stylesheet" type="text/x-sass"/>
+    <link href="{% static 'style/home/list-performances.sass' %}" rel="stylesheet" type="text/x-sass"/>
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+    <script src="{% static "packages/bootstrap-select/dist/js/bootstrap-select.js" %}"></script>
+    <script src="{% static 'packages/jquery-ui/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/init-datepicker.js' %}"></script>
+    <script src="{% static 'js/init-bts-select.js' %}"></script>
+    <script src="{% static 'js/home/home.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <section class="main-info">
+        <div class="container">
+            <div class="row">
+                {% include "home/main-information.html" %}
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 advertising">
+                    <a href="#">
+                        <p>каждую неделю мы рассказываем о главных спектаклях</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
+                {% include "home/filter.html" %}
+            </div>
+        </div>
+    </section>
+
+    <section class="list-performances">
+        <div class="container">
+            <div class="row">
+                {% include "home/list-performances.html" %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

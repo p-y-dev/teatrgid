@@ -192,4 +192,73 @@ header
     @media(max-width: 767px)
         height: 50px
 
+footer
+    height: 345px
+    background-color: #225161
 
+    ul
+        list-style: none
+        padding: 0px
+
+        li
+            color: $white
+            font-family: "GothamProRegular"
+
+            a
+                font-family: "GothamProRegular"
+                text-decoration: none !important
+                color: $white !important
+                opacity: 0.7
+                transition: .3s
+
+                &:active, &:hover, &:focus, &:visited
+                    opacity: 1
+
+    .logo-footer, .contacts, .menu, .social-network
+        float: left
+
+    .logo-footer
+        margin-top: 125px
+        opacity: 0.7
+        transition: .3s
+
+        &:active, &:hover, &:focus, &:visited
+            opacity: 1
+
+    .contacts
+        margin-top: 111px
+        margin-left: 110px
+        li
+            margin-bottom: 10px
+
+            a
+
+        .title
+            font-size: 18px
+
+        .phone
+            font-size: 30px
+
+        .email
+            font-size: 16px
+
+    .menu
+        margin-left: 130px
+        margin-top: 75px
+
+        &__item
+            margin-bottom: 10px
+
+            a
+                font-size: 16px
+
+    .social-network
+        float: right
+        margin-top: 140px
+
+        li
+            display: inline-block
+            margin-left: 50px
+
+            a
+                font-size: 40px

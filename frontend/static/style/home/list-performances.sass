@@ -1,0 +1,32 @@
+@import "../colors.sass"
+@import "../fonts.css"
+
+.list-performances
+    margin-top: 60px
+    padding-bottom: 60px
+
+    .nav-tabs
+        text-align: center
+        border: 0px solid #fff !important
+
+        li
+            float: none
+            display: inline-block
+
+            a
+                font-family: "GothamProRegular"
+                border: 0px solid #fff !important
+                text-transform: uppercase
+                font-size: 16px
+                color: #393939 !important
+                padding: 0px 15px
+
+                &:active, &:hover, &:focus, &:visited
+                    border-bottom: 5px solid $orange !important
+                    background-color: $white
+
+        .active  a
+            border-bottom: 5px solid $orange !important
+
+        .schedule-tab
+            margin-left: 200px

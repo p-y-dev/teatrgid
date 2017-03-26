@@ -1,6 +1,6 @@
 @import "../colors.sass"
 @import "../fonts.css"
-@import "variable"
+@import "variable.sass"
 
 @import "../form-fields.sass"
 
@@ -275,6 +275,13 @@
         a
             font-size: 12px
 
+.open-filter
+    display: none
+
+    @media(max-width: 767px)
+        display: block
+        margin-top: 35px
+
 .filter
     margin-top: 45px
     padding: 0px 0px
@@ -399,6 +406,7 @@
 
 
     @media(max-width: 767px)
+        display: none
         padding: 0px 15px
         width: 320px
         margin-left: -160px
