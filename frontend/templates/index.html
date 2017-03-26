@@ -6,11 +6,17 @@
 
 {% block styles %}
     {{ block.super }}
+    <link href="{% static 'packages/bootstrap-select/dist/css/bootstrap-select.css' %}" rel="stylesheet">
+    <link href="{% static 'packages/jquery-ui/jquery-ui.min.css' %}" rel="stylesheet">
     <link href="{% static 'style/home/home.sass' %}" rel="stylesheet" type="text/x-sass"/>
 {% endblock %}
 
 {% block js %}
     {{ block.super }}
+    <script src="{% static "packages/bootstrap-select/dist/js/bootstrap-select.js" %}"></script>
+    <script src="{% static 'packages/jquery-ui/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/init-datepicker.js' %}"></script>
+    <script src="{% static 'js/init-bts-select.js' %}"></script>
     <script src="{% static 'js/home/home.js' %}"></script>
 {% endblock %}
 
@@ -52,6 +58,7 @@
                                 Агата возвращается домой
                             </h2>
                             <p class="category">детские спектакли, драматические спектакли</p>
+                            <p class="rating">8.2</p>
                         </div>
                     </a>
 
@@ -88,6 +95,108 @@
 
             <div class="row">
                 <div class="col-xs-12 filter">
+                    <form id="filter-form" method="get">
+                        {% csrf_token %}
+                        <div class="row filter__row">
+                            <div class="filter__date">
+                                <input type="text" id="datepicker" disabled>
+                            </div>
+
+                            <div class="filter__rating">
+                                <p>Рэйтинг от</p>
+                                <select name="rating" id="rating-filter" class="bts-select">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                </select>
+                            </div>
+
+                            <div class="filter__age">
+                                <p>Возраст от</p>
+
+                                <select name="age-from" id="age-from-filter" class="bts-select">
+                                    <option>10</option>
+                                    <option>18</option>
+                                    <option>24</option>
+                                    <option>25</option>
+                                    <option>56</option>
+                                    <option>65</option>
+                                    <option>99</option>
+                                </select>
+
+                                <p class="to">до</p>
+
+                                <select name="age-to" id="age-to-filter" class="bts-select">
+                                    <option>10</option>
+                                    <option>18</option>
+                                    <option>24</option>
+                                    <option>25</option>
+                                    <option>56</option>
+                                    <option>65</option>
+                                    <option>99</option>
+                                </select>
+                            </div>
+
+                            <div class="filter__clear">
+                                <p class="to">Сбросить</p>
+                                <input type="submit" value="">
+                            </div>
+                        </div>
+
+                        <div class="row filter__row">
+                            <div class="filter__theaters">
+                                <select name="theaters" id="theaters-filter" class="bts-select">
+                                    <option>Театр</option>
+                                    <option>Старый Дом</option>
+                                    <option>Красный факел</option>
+                                    <option>Театр оперы и балета</option>
+                                    <option>Театр кукол</option>
+                                    <option>Первый театр</option>
+                                    <option>Театр Глобус</option>
+                                </select>
+                            </div>
+
+                            <div class="filter__genres">
+                                <select name="genres" id="genres-filter" class="bts-select">
+                                    <option>Жанры</option>
+                                    <option>Драма</option>
+                                    <option>Комедия</option>
+                                    <option>Мелодрама</option>
+                                    <option>Мистерия</option>
+                                    <option>Монодрама</option>
+                                    <option>Пастораль</option>
+                                </select>
+                            </div>
+
+                            <div class="filter__actors">
+                                <select name="actors" id="actors-filter" class="bts-select">
+                                    <option>Актеры</option>
+                                    <option>Дмитрий Мазуров</option>
+                                    <option>Павел Прилучный</option>
+                                    <option>Алексей Вертков</option>
+                                    <option>Максим Битюков</option>
+                                    <option>Анатолий Солоницын</option>
+                                </select>
+                            </div>
+
+                            <div class="filter__directed">
+                                <select name="directed" id="directed-filter" class="bts-select">
+                                    <option>Режиссеры</option>
+                                    <option>Абдулов Гавриил Данилович</option>
+                                    <option>Бескова Вера Петровна</option>
+                                    <option>Весник Евгений Яковлевич</option>
+                                    <option>Визгов Михаил Алексеевич</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

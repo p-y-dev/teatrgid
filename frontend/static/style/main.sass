@@ -62,36 +62,38 @@ header
 
             #search-form input
                 &[type="text"]
-                    width: 250px
-                    height: 40px
+                    width: 250px !important
+                    height: 40px !important
                     padding-top: 9px
                     padding-left: 15px
                     border: 1px solid #efeded
-                    border-radius: 50px 0 0 50px
+                    border-radius: 5px 0 0 5px
                     outline: none
                     margin-right: -5px
+                    box-shadow: 0 0 3px rgba(0,0,0,0.2)
 
                     @include placeholder-search
 
                     &:focus
-                        box-shadow: none
+                        box-shadow: 0 0 4px rgba(0,0,0,0.2)
 
             #search-form button
                 height: 40px
                 width: 50px
                 border: 1px solid #efeded
                 border-left: none
-                border-radius: 0 50px 50px 0
+                border-radius: 0 5px 5px 0
                 outline: none
                 background-color: #f0f0f0
                 transition: .3s
+                box-shadow: 0 0 3px rgba(0,0,0,0.2)
 
                 .fa-search
                     color: #62a6be
                     font-size: 18px
 
                 &:active, &:hover, &:focus, &:visited
-                    box-shadow: none
+                    box-shadow: 0 0 4px rgba(0,0,0,0.2)
                     background-color: #e6e6e6
 
             @media(max-width: 991px)
@@ -99,8 +101,8 @@ header
 
                 #search-form input
                     &[type="text"]
-                        height: 25px
-                        width: 190px
+                        height: 25px !important
+                        width: 190px !important
 
                 #search-form button
                     height: 25px
