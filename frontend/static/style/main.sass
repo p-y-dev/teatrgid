@@ -193,10 +193,11 @@ header
         height: 50px
 
 footer
-    height: 345px
+    padding: 50px 0px
     background-color: #225161
 
     ul
+        margin-bottom: 0px
         list-style: none
         padding: 0px
 
@@ -218,20 +219,29 @@ footer
         float: left
 
     .logo-footer
-        margin-top: 125px
         opacity: 0.7
         transition: .3s
+        margin-top: 65px
 
         &:active, &:hover, &:focus, &:visited
             opacity: 1
 
+        @media(max-width: 1199px)
+            width: 195px
+
+        @media(max-width: 991px)
+            width: 160px
+
+        @media(max-width: 767px)
+            float: none
+            margin: auto
+
     .contacts
-        margin-top: 111px
         margin-left: 110px
+        margin-top: 50px
+
         li
             margin-bottom: 10px
-
-            a
 
         .title
             font-size: 18px
@@ -242,9 +252,27 @@ footer
         .email
             font-size: 16px
 
+        @media(max-width: 1199px)
+            margin-left: 85px
+
+            .title
+                font-size: 16px
+
+            .phone
+                font-size: 26px
+
+        @media(max-width: 991px)
+            margin-left: 50px
+
+            .title
+                font-size: 14px
+
+            .phone
+                font-size: 22px
+
     .menu
         margin-left: 130px
-        margin-top: 75px
+        margin-top: 10px
 
         &__item
             margin-bottom: 10px
@@ -252,9 +280,19 @@ footer
             a
                 font-size: 16px
 
+        @media(max-width: 1199px)
+            margin-left: 105px
+
+        @media(max-width: 991px)
+            margin-left: 65px
+
+            &__item
+                a
+                    font-size: 14px
+
     .social-network
         float: right
-        margin-top: 140px
+        margin-top: 70px
 
         li
             display: inline-block
@@ -262,3 +300,60 @@ footer
 
             a
                 font-size: 40px
+
+        @media(max-width: 1199px)
+            li
+                margin-left: 35px
+
+                a
+                    font-size: 36px
+
+        @media(max-width: 991px)
+            li
+                margin-left: 25px
+
+                a
+                    font-size: 30px
+
+
+    @media(max-width: 767px)
+        height: 330px
+        .footer-content
+            position: absolute
+            width: 320px
+            margin-left: -160px
+            left: 50%
+
+            .contacts
+                margin-top: 30px
+                margin-left: 25px
+
+                li
+                    margin-bottom: 13px
+
+                .phone
+                    font-size: 19px
+
+                .email
+                    font-size: 14px
+
+            .menu
+                margin-left: 25px
+                margin-top: 28px
+
+                &__item
+                    margin-bottom: 5px
+
+                    a
+                        font-size: 13px
+
+            .social-network
+                float: none
+                position: absolute
+                margin-top: 135px
+
+                li
+                    margin-left: 25px
+
+                    a
+                        font-size: 35px

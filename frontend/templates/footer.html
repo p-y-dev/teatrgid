@@ -3,50 +3,51 @@
 <footer>
     <div class="container">
         <div class="row">
-            <a href="{% url "home" %}">
-                <img class="img-responsive logo-footer" src="{% static "images/logo/logo-footer.png" %}">
-            </a>
+            <div class="footer-content">
+                <a href="{% url "home" %}">
+                    <img class="img-responsive logo-footer" src="{% static "images/logo/logo-footer.png" %}">
+                </a>
 
-            <ul class="contacts">
-                <li class="title">
-                    Связаться с нами:
-                </li>
+                <ul class="contacts">
+                    <li class="title">
+                        Связаться с нами:
+                    </li>
 
-                <li class="phone">
-                    <a href="tel:8 800 3000 895">
-                        8 800 3000 895
-                    </a>
-                </li>
+                    <li class="phone">
+                        <a href="tel:8 800 3000 895">
+                            8 800 3000 895
+                        </a>
+                    </li>
 
-                <li class="email">
-                    <a href="mailto:theatergid@gmail.com">
-                        theatergid@gmail.com
-                    </a>
-                </li>
-            </ul>
+                    <li class="email">
+                        <a href="mailto:theatergid@gmail.com">
+                            theatergid@gmail.com
+                        </a>
+                    </li>
+                </ul>
 
-            {% include "menu.html" %}
+                {% include "menu.html" %}
 
-            <ul class="social-network">
-                <li class="#">
-                    <a href="#">
-                        <i class="fa fa-vk" aria-hidden="true"></i>
-                    </a>
-                </li>
+                <ul class="social-network">
+                    <li class="#">
+                        <a href="#">
+                            <i class="fa fa-vk" aria-hidden="true"></i>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="#">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                    </a>
-                </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="#">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                    </a>
-                </li>
-            </ul>
-
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </footer>
