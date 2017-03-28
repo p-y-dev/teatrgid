@@ -5,6 +5,9 @@
     margin-top: 60px
     padding-bottom: 60px
 
+    @media(max-width: 991px)
+        margin-top: 30px
+
     .nav-tabs
         text-align: center
         border: 0px solid #fff !important
@@ -21,6 +24,9 @@
                 color: #393939 !important
                 padding: 0px 15px
 
+                @media(max-width: 767px)
+                    font-size: 14px
+
                 &:active, &:hover, &:focus, &:visited
                     border-bottom: 5px solid $orange !important
                     background-color: $white
@@ -30,3 +36,112 @@
 
         .schedule-tab
             margin-left: 200px
+
+            @media(max-width: 991px)
+                margin-left: 60px
+
+            @media(max-width: 767px)
+                margin-left: 20px
+
+.poster
+
+    &__desktop
+        .row
+            margin: 60px 0px 0px 0px
+
+            @media(max-width: 991px)
+                margin-top: 30px
+            a
+                font-family: "GothamProRegular"
+                text-decoration: none !important
+                color: #393939
+
+                img
+                    margin: auto
+                    width: 260px
+                    height: 370px
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.2)
+                    transition: .3s
+
+                h3
+                    font-family: "GothamProRegular"
+                    float: left
+                    margin: 30px 0px 0px 0px
+                    font-size: 18px
+                    width: 80%
+                    opacity: .9
+                    transition: .3s
+                    padding: 0px 5px 0px 15px
+
+                p
+                    font-family: "GothamProRegular"
+                    float: left
+                    width: 20%
+                    font-size: 20px
+                    color: $gold
+                    border: 3px solid $gold
+                    padding: 10px 10px
+                    margin-top: 10px
+                    display: inline-block
+                    border-radius: 50%
+
+                &:active, &:hover, &:focus, &:visited
+                    img
+                        box-shadow: 0 4px 55px rgba(0,0,0,0.2)
+
+                    h3
+                        opacity: 1
+
+                @media(max-width: 1199px)
+                    img
+                        height: 310px
+
+                    h3
+                        font-size: 16px
+                        margin-top: 20px
+
+                    p
+                        font-size: 19px
+                        padding: 4px 6px
+
+                @media(max-width: 991px)
+                    img
+                        height: 230px
+
+                    h3
+                        font-size: 14px
+
+                    p
+                        font-size: 14px
+                        padding: 5px 0px 2px 4px
+                        border: 2px solid $gold
+
+        @media(max-width: 767px)
+            display: none
+
+    &__mobile
+        display: none
+
+        @media(max-width: 767px)
+            display: block
+
+            .row
+                margin: 30px 0px 0px 0px
+                a
+                    font-family: "GothamProRegular"
+                    text-decoration: none !important
+                    color: #393939
+
+                    img
+                        margin: auto
+                        max-height: 270px
+                        box-shadow: 0 4px 10px rgba(0,0,0,0.2)
+
+                    h3
+                        text-align: center
+                        font-family: "GothamProRegular"
+                        font-size: 14px
+                        margin: 15px 0px 0px 0px
+
+                        span
+                            color: $gold
