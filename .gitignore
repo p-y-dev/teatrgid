@@ -3,3 +3,4 @@
 __pycache__
 .idea
 var/
+src/teatrgid/settings_production.py
