@@ -13,6 +13,19 @@
     .clear_mobile
         display: none
 
+    &__directed
+        .dropdown-menu
+            margin-left: -25px
+
+            @media(max-width: 1199px)
+                margin-left: -75px
+
+            @media(max-width: 991px)
+                margin-left: -70px
+
+            @media(max-width: 767px)
+                margin-left: 0px
+
     &__date, &__rating, &__age, &__theaters,
     &__genres, &__actors, &__directed
         position: relative
