@@ -41,10 +41,23 @@
         <a href="#" class="link-account">
             <img src="{% static "images/icons/user.png" %}">
         </a>
-        <img class="search" src="{% static "images/icons/search.png" %}">
+        <i class="btn-search fa fa-search" aria-hidden="true"></i>
     </div>
 </header>
 
 <div id="mobile-menu">
     {% include "menu.html" %}
+</div>
+
+<div id="mobile-search">
+    <div class="container-fluid">
+        <div class="row">
+            <form id="mobile-search-form">
+                <input type="text" id="input-search-mobile" name="text-search" val="" placeholder="Поиск">
+                <button type="submit" class="btn btn-default">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
+    </div>
 </div>
