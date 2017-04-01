@@ -1,6 +1,14 @@
 @import "colors.sass"
 @import "fonts.css"
 
+$mobile-height-menu: 50px
+
+body
+    background-image: url(../images/background/texture.png)
+    @media(max-width: 767px)
+        padding-top: $mobile-height-menu
+
+
 @mixin placeholder
   &::-moz-placeholder
     @content
@@ -156,13 +164,13 @@ header
         @media(max-width: 767px)
             display: none
 
-    .mobile-menu
+    .mobile-header
         display: none
 
         @media(max-width: 767px)
             display: block
 
-            .fa-bars
+            .btn-menu
                 color: #83b9cd
                 font-size: 21px
                 float: left
@@ -190,7 +198,36 @@ header
         height: 160px
 
     @media(max-width: 767px)
-        height: 50px
+        height: $mobile-height-menu
+        position: fixed
+        width: 100%
+        top: 0px
+        z-index: 999
+
+#mobile-menu
+    display: none
+
+    @media(max-width: 767px)
+        position: fixed
+        width: 100%
+        height: 100%
+        background-color: #fff
+        opacity: 0.95
+        z-index: 19
+
+        .menu
+            padding: 0px 0px 0px 20px
+            list-style: none
+
+            &__item
+                margin-top: 10px
+
+                a
+                    font-family: "GothamProRegular"
+                    text-transform: uppercase
+                    font-size: 16px
+                    color: #000
+                    text-decoration: none !important
 
 footer
     padding: 50px 0px
