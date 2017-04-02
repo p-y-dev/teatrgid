@@ -7,6 +7,8 @@ class HomePage(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomePage, self).get_context_data(**kwargs)
 
+        print(self.request.user.userprofile.city.slug)
+
         context.update({
             "test": "Hello World",
         })

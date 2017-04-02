@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'compressor',
+    'singlemodeladmin',
+
+    'teatrgid.general_information',
+
 ]
 
 MIDDLEWARE = [
