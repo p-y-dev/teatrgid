@@ -1,6 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
-
 from autoslug import AutoSlugField
 
 
@@ -62,15 +60,3 @@ class ListAgeRestrictions(ListObj):
     )
 
     age_restrictions = models.ForeignKey(AgeRestrictions, on_delete=models.CASCADE)
-
-
-class UserProfile(models.Model):
-    user = models.OneToOneField(User)
-    city = models.ForeignKey(ListCity, on_delete=models.CASCADE)
-
-    def __unicode__(self):
-        return self.user
-
-    class Meta:
-        verbose_name = 'Профиль'
-        verbose_name_plural = 'Профили'

@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,6 +41,7 @@ INSTALLED_APPS = [
     'singlemodeladmin',
 
     'teatrgid.general_information',
+    'teatrgid.custom_user'
 
 ]
 
@@ -110,6 +110,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# custom user
+AUTH_USER_MODEL = 'custom_user.User'
 
 
 # Internationalization

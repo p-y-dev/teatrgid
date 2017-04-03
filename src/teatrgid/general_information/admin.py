@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
 from teatrgid.general_information.models import City, ListCity, Genres, ListGenres, \
-                                                AgeRestrictions, ListAgeRestrictions, UserProfile
+                                                AgeRestrictions, ListAgeRestrictions
 
 
 class ListCityAdmin(admin.TabularInline):
@@ -37,21 +37,6 @@ class AgeRestrictionsAdmin(SingleModelAdmin):
     ]
 
 
-class UserInline(admin.StackedInline):
-    model = UserProfile
-    can_delete = False
-    verbose_name_plural = 'Дополнительная информация'
-
-
-class CustomUserAdmin(UserAdmin):
-    inlines = [
-        UserInline,
-    ]
-
-
 admin.site.register(City, CityAdmin)
 admin.site.register(Genres, GenresAdmin)
 admin.site.register(AgeRestrictions, AgeRestrictionsAdmin)
-
-admin.site.unregister(User)
-admin.site.register(User, CustomUserAdmin)
