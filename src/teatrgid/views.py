@@ -10,10 +10,11 @@ class HomePage(TemplateView):
         context = super(HomePage, self).get_context_data(**kwargs)
 
         ip = get_ip(self.request)
-        print("ip = " + ip)
+        g = GeoIP2()
+        location = g.city(ip)
 
         context.update({
-            "test_ip": ip,
+            "location": location,
         })
 
         return context
