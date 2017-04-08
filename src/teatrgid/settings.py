@@ -158,5 +158,5 @@ COMPRESS_PRECOMPILERS = (
 )
 
 # geo
-
-GEOIP_PATH = "src/geo/"
+KEY_CITY_SESSION = "city_user"
+TEST_IP = "109.95.193.0"
