@@ -4,28 +4,16 @@ from django.views.generic.base import TemplateView
 
 from teatrgid.geoip import GeoIp
 
-from teatrgid.general_information.models import ListCity
-
 
 class GeoIpView(TemplateView):
     def get(self, request, *args, **kwargs):
         if not request.user.is_authenticated():
             geo_obj = GeoIp(request)
-            city_user = ListCity.objects.filter(name=geo_obj.name_city)
 
-            if not city_user:
+            if geo_obj.city_name_user is None:
                 return HttpResponseRedirect('https://www.google.ru/')
 
-            city_user_name = city_user.get().name
-
-            try:
-                request.session[settings.KEY_CITY_SESSION]
-            except KeyError:
-                request.session[settings.KEY_CITY_SESSION] = city_user_name
-                return super(GeoIpView, self).get(self, request, args, kwargs)
-
-            if city_user_name != request.session[settings.KEY_CITY_SESSION]:
-                request.session[settings.KEY_CITY_SESSION] = city_user_name
+            geo_obj.add_name_city_in_session(request)
 
         return super(GeoIpView, self).get(self, request, args, kwargs)
 
