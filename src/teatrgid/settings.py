@@ -160,4 +160,4 @@ COMPRESS_PRECOMPILERS = (
 # geo
 URL_IPGEOBASE = "http://ipgeobase.ru:7020/geo?ip="
 KEY_CITY_SESSION = "city_user"
-TEST_IP = "31.13.17.0"
+TEST_IP = "83.234.205.0"
