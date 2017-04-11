@@ -1,3 +1,4 @@
+from django.conf import settings
 from teatrgid.geoip import GeoIp
 
 
@@ -7,8 +8,9 @@ class CityMiddleware(object):
 
     def __call__(self, request):
         if not request.user.is_authenticated():
-            geo_obj = GeoIp(request)
-            request.name_city_user = geo_obj.name_city_user
+            GeoIp(request)
+            request.name_city_user = request.session[settings.KEY_CITY_SESSION]
+
         else:
             try:
                 request.name_city_user = request.user.city.name
