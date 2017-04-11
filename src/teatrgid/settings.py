@@ -53,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'teatrgid.general_information.middleware.CityMiddleware'
 ]
 
 ROOT_URLCONF = 'teatrgid.urls'
@@ -70,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'teatrgid.general_information.context_processors.name_city_user',
             ],
         },
     },
@@ -160,4 +163,4 @@ COMPRESS_PRECOMPILERS = (
 # geo
 URL_IPGEOBASE = "http://ipgeobase.ru:7020/geo?ip="
 KEY_CITY_SESSION = "city_user"
-TEST_IP = "83.234.205.0"
+TEST_IP = "31.13.17.0"
