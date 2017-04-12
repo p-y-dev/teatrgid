@@ -1,2 +1,5 @@
 def name_city_user(request):
-    return {'name_city_user': request.name_city_user}
+    if not hasattr(request, "city_obj"):
+        return {}
+
+    return {'name_city_user': request.city_obj.name}

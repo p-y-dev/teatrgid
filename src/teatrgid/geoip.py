@@ -15,6 +15,7 @@ class GeoIp(object):
         else:
             self.ip_address = get_ip(request)
 
+    def adding_city_to_session(self, request):
         name_city_user = request.session.get(settings.KEY_CITY_SESSION)
         name_city_user_db = self._get_city_name_in_db()
 
