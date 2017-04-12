@@ -1,4 +1,5 @@
 from django.views.generic.base import TemplateView
+from .performances.models import Performance
 
 
 class HomePage(TemplateView):
@@ -7,10 +8,10 @@ class HomePage(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomePage, self).get_context_data(**kwargs)
 
-        print(self.request.city_obj.name)
-        print(self.request.city_obj.slug)
+        performances = Performance.objects.filter(city=self.request.city_obj)
 
         context.update({
+            "performances": performances,
         })
 
         return context

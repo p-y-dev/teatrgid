@@ -6,3 +6,4 @@ django-autoslug==1.9.3
 singlemodeladmin==0.7
 Unidecode==0.4.20
 django-ipware==1.1.6
+Pillow==4.1.0

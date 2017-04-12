@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'compressor',
     'singlemodeladmin',
 
+    'teatrgid.custom_user',
     'teatrgid.general_information',
-    'teatrgid.custom_user'
-
+    'teatrgid.performances',
 ]
 
 MIDDLEWARE = [
@@ -163,4 +163,10 @@ COMPRESS_PRECOMPILERS = (
 # geo
 URL_IPGEOBASE = "http://ipgeobase.ru:7020/geo?ip="
 KEY_CITY_SESSION = "city_user"
-TEST_IP = "2.95.152.0"
+
+# Красноярск - 37.112.199.0
+# Новосибирск - 37.49.208.0
+# Москва - 5.62.157.0
+# Санкт-Петербург - 5.188.0.0
+TEST_IP = "37.112.199.0"
+

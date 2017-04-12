@@ -9,6 +9,7 @@ class ListObj(models.Model):
     name = models.CharField(
         verbose_name="Название",
         max_length=60,
+        unique=True,
     )
 
     slug = AutoSlugField(

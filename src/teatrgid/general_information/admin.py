@@ -1,7 +1,5 @@
 from django.contrib import admin
 from singlemodeladmin import SingleModelAdmin
-from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.models import User
 
 from teatrgid.general_information.models import City, ListCity, Genres, ListGenres, \
                                                 AgeRestrictions, ListAgeRestrictions
