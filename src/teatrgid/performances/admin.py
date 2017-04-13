@@ -3,15 +3,17 @@ from .models import Performance
 
 
 class PerformanceAdmin(admin.ModelAdmin):
-    exclude = (
-        "publication_date",
-        "city"
-    )
+    exclude = "publication_date",
 
-    list_display = (
-        "name",
-        "city"
-    )
+    list_display = "name", "city",
+
+    def get_exclude(self, request, obj=None):
+        exclude = super().get_exclude(request, obj)
+
+        if not request.user.is_superuser:
+            exclude += "city",
+
+        return exclude
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
