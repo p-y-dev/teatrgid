@@ -20,7 +20,12 @@ class Performance(models.Model):
         max_length=120
     )
 
-    city = models.ForeignKey(ListCity, on_delete=models.CASCADE)
+    city = models.ForeignKey(
+        ListCity,
+        verbose_name="Город",
+        on_delete=models.CASCADE,
+        blank=True
+    )
 
     publication_date = models.DateTimeField(
         verbose_name="Дата публикации",
