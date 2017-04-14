@@ -61,3 +61,4 @@ class ListAgeRestrictions(ListObj):
     )
 
     age_restrictions = models.ForeignKey(AgeRestrictions, on_delete=models.CASCADE)
+

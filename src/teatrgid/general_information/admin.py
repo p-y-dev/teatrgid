@@ -1,6 +1,6 @@
 from django.contrib import admin
 from singlemodeladmin import SingleModelAdmin
-
+from ..admin import AdminModelWithCity
 from teatrgid.general_information.models import City, ListCity, Genres, ListGenres, \
                                                 AgeRestrictions, ListAgeRestrictions
 
@@ -29,7 +29,9 @@ class GenresAdmin(SingleModelAdmin):
     ]
 
 
-class AgeRestrictionsAdmin(SingleModelAdmin):
+class AgeRestrictionsAdmin(SingleModelAdmin, AdminModelWithCity):
+    exclude = "",
+
     inlines = [
         ListAgeRestrictionsAdmin,
     ]
