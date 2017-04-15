@@ -31,7 +31,7 @@ class GeneralModel(models.Model):
     )
 
     slug = AutoSlugField(
-        verbose_name='Slug спектакля',
+        verbose_name='Slug',
         populate_from="name",
         unique=True,
         blank=True
@@ -39,3 +39,10 @@ class GeneralModel(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class SortGeneralModel(GeneralModel):
+    class Meta(object):
+        abstract = True
+
+    my_order = models.PositiveIntegerField(default=0, blank=False, null=False)

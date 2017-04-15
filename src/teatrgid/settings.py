@@ -39,10 +39,12 @@ INSTALLED_APPS = [
 
     'compressor',
     'singlemodeladmin',
+    'adminsortable2',
 
     'teatrgid.custom_user',
     'teatrgid.general_information',
     'teatrgid.performances',
+    'teatrgid.theaters',
 ]
 
 MIDDLEWARE = [
