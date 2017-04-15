@@ -2,6 +2,7 @@ from django.db import models
 from ..models import GeneralModel
 from ..general_information.models import ListGenres, ListAgeRestrictions
 from ..theaters.models import Theaters
+from ..actors.models import Actors
 
 
 class Performance(GeneralModel):
@@ -24,6 +25,12 @@ class Performance(GeneralModel):
     theaters = models.ManyToManyField(
         Theaters,
         verbose_name="Театры",
+        default=""
+    )
+
+    actors = models.ManyToManyField(
+        Actors,
+        verbose_name="Актеры",
         default=""
     )
 

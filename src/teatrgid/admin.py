@@ -1,5 +1,8 @@
 from django.contrib import admin
+from adminsortable2.admin import SortableAdminMixin
+
 from teatrgid.theaters.models import Theaters
+from teatrgid.actors.models import Actors
 
 
 class AdminModelWithCity(admin.ModelAdmin):
@@ -8,6 +11,8 @@ class AdminModelWithCity(admin.ModelAdmin):
         if not request.user.is_superuser:
             if db_field.name == "theaters":
                 kwargs["queryset"] = Theaters.objects.filter(city=request.user.city)
+            elif db_field.name == "actors":
+                kwargs["queryset"] = Actors.objects.filter(city=request.user.city)
 
         return super().formfield_for_manytomany(db_field, request, **kwargs)
 
@@ -31,3 +36,7 @@ class AdminModelWithCity(admin.ModelAdmin):
             obj.city = request.user.city
 
         super().save_model(request, obj, form, change)
+
+
+class AdminSortModelWithCity(SortableAdminMixin, AdminModelWithCity):
+    pass
