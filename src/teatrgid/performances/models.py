@@ -1,8 +1,57 @@
 from django.db import models
-from ..models import GeneralModel
+from datetime import datetime
+from autoslug import AutoSlugField
+
+from ..models import GeneralModel, Gallery
 from ..general_information.models import ListGenres, ListAgeRestrictions
 from ..theaters.models import Theaters
-from ..actors.models import Actors
+from ..persons.models import Actors, Directors
+
+
+class PerformanceReviews(models.Model):
+    class Meta:
+        verbose_name_plural = "Отзывы"
+        verbose_name = "Отзывы"
+        ordering = "-publication_date",
+
+    publication_date = models.DateTimeField(
+        verbose_name="Дата публикации",
+        default=datetime.now,
+        blank=True
+    )
+
+
+class PerformanceGallery(Gallery):
+    performance = models.ForeignKey("Performance", on_delete=models.CASCADE)
+
+
+class DatesEvent(models.Model):
+    class Meta:
+        verbose_name_plural = "Даты проведения"
+        verbose_name = "Даты проведения"
+
+    date_time = models.DateTimeField(
+        verbose_name="Дата и время",
+        default=datetime.now,
+    )
+
+    duration = models.TimeField(
+        verbose_name="Продолжительность",
+        default="00:00:00",
+    )
+
+    is_intermission = models.BooleanField(
+        verbose_name="Есть антракт?",
+        default=False
+    )
+
+    count_intermission = models.PositiveIntegerField(
+        verbose_name="Количество антрактов",
+        blank=True,
+        default=True
+    )
+
+    performance = models.ForeignKey("Performance", on_delete=models.CASCADE)
 
 
 class Performance(GeneralModel):
@@ -34,3 +83,29 @@ class Performance(GeneralModel):
         default=""
     )
 
+    directors = models.ManyToManyField(
+        Directors,
+        verbose_name="Режиссеры",
+        default=""
+    )
+
+    link_order = models.CharField(
+        verbose_name="Ссылка на покупку билетов",
+        max_length=240,
+        default=""
+    )
+
+    rating = models.FloatField(
+        verbose_name="Рейтинг",
+        default=0
+    )
+
+    reviews = models.ManyToManyField(
+        PerformanceReviews,
+        verbose_name="Отзывы"
+    )
+
+    top = models.BooleanField(
+        verbose_name="Выводить в топ?",
+        default=False
+    )

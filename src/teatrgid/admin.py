@@ -1,11 +1,25 @@
+from django import forms
 from django.contrib import admin
 from adminsortable2.admin import SortableAdminMixin
 
+from teatrgid.forms import TinyMCEInput
 from teatrgid.theaters.models import Theaters
-from teatrgid.actors.models import Actors
+from teatrgid.persons.models import Actors, Directors
+
+from .models import GeneralModel
+
+
+class ModelForm(forms.ModelForm):
+    content = forms.CharField(widget=TinyMCEInput, required=True, label="Контент")
+
+    class Meta:
+        model = GeneralModel
+        fields = "__all__"
 
 
 class AdminModelWithCity(admin.ModelAdmin):
+
+    form = ModelForm
 
     def formfield_for_manytomany(self, db_field, request, **kwargs):
         if not request.user.is_superuser:
@@ -13,6 +27,10 @@ class AdminModelWithCity(admin.ModelAdmin):
                 kwargs["queryset"] = Theaters.objects.filter(city=request.user.city)
             elif db_field.name == "actors":
                 kwargs["queryset"] = Actors.objects.filter(city=request.user.city)
+            elif db_field.name == "directors":
+                kwargs["queryset"] = Directors.objects.filter(city=request.user.city)
+
+            print(db_field.name)
 
         return super().formfield_for_manytomany(db_field, request, **kwargs)
 

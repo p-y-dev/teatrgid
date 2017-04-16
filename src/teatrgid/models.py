@@ -4,6 +4,18 @@ from autoslug import AutoSlugField
 from teatrgid.general_information.models import ListCity
 
 
+class Gallery(models.Model):
+    class Meta:
+        verbose_name_plural = "Галерея"
+        verbose_name = "Галерея"
+        abstract = True
+
+    thumbnail = models.ImageField(
+        verbose_name="Изображения",
+        upload_to='img/gallery/',
+    )
+
+
 class GeneralModel(models.Model):
     class Meta:
         abstract = True
@@ -28,6 +40,11 @@ class GeneralModel(models.Model):
         verbose_name="Дата публикации",
         default=datetime.now,
         blank=True
+    )
+
+    content = models.TextField(
+        max_length=6000,
+        default=""
     )
 
     slug = AutoSlugField(
