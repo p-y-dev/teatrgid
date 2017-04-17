@@ -29,7 +29,7 @@ class GenresAdmin(SingleModelAdmin):
     ]
 
 
-class AgeRestrictionsAdmin(SingleModelAdmin, AdminModelWithCity):
+class AgeRestrictionsAdmin(SingleModelAdmin):
     exclude = "",
 
     inlines = [

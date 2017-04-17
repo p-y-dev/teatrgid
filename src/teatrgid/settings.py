@@ -136,7 +136,7 @@ AUTH_USER_MODEL = 'custom_user.User'
 
 LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Novosibirsk'
 
 USE_I18N = True
 

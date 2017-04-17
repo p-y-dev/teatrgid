@@ -1,6 +1,5 @@
 from django.db import models
 from datetime import datetime
-from autoslug import AutoSlugField
 
 from ..models import GeneralModel, Gallery
 from ..general_information.models import ListGenres, ListAgeRestrictions
@@ -29,15 +28,16 @@ class DatesEvent(models.Model):
     class Meta:
         verbose_name_plural = "Даты проведения"
         verbose_name = "Даты проведения"
+        ordering = "date_time",
 
     date_time = models.DateTimeField(
         verbose_name="Дата и время",
-        default=datetime.now,
+        blank=True,
     )
 
     duration = models.TimeField(
         verbose_name="Продолжительность",
-        default="00:00:00",
+        blank=True,
     )
 
     is_intermission = models.BooleanField(
@@ -48,7 +48,7 @@ class DatesEvent(models.Model):
     count_intermission = models.PositiveIntegerField(
         verbose_name="Количество антрактов",
         blank=True,
-        default=True
+        default=0
     )
 
     performance = models.ForeignKey("Performance", on_delete=models.CASCADE)
@@ -58,7 +58,6 @@ class Performance(GeneralModel):
     class Meta:
         verbose_name_plural = "Спектакли"
         verbose_name = "Спектакль"
-        ordering = "-publication_date",
 
     genres = models.ManyToManyField(
         ListGenres,

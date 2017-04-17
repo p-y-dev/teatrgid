@@ -19,7 +19,7 @@
         <div id="list-performances-poster" class="poster tab-pane fade in active">
             <div class="poster__desktop">
                 <div class="row">
-                    {% for performance in performances %}
+                    {% for performance in performances_affiche %}
                         <div class="col-sm-3">
                             <a href="#">
                                 <img src="{{ performance.thumbnail.url }}" class="img-responsive img-performances">
@@ -33,7 +33,7 @@
 
             <div class="poster__mobile">
                 <div class="row">
-                    {% for performance in performances %}
+                    {% for performance in performances_affiche %}
                         <div class="col-xs-6">
                             <a href="#">
                                 <img src="{{ performance.thumbnail.url }}" class="img-responsive img-performances">
@@ -50,237 +50,62 @@
                 <h3 class="title-schedule">сегодня,<span class="date"> 18 марта</span>, суббота <i class="fa fa-calendar" aria-hidden="true"></i></h3>
             </div>
             <div class="schedule__desktop">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <img src="{% static "images/test/s1.png" %}" class="img-responsive img-performances">
-                        </a>
+                {% for performances in performances_schedule %}
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <a href="#">
+                                <img src="{{ performances.thumbnail.url }}" class="img-responsive img-performances">
+                            </a>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <a href="#">
+                                <h3 class="name-schedule text-schedule">{{ performances.name }}</h3>
+                            </a>
+                            <p class="info-schedule text-schedule">Драма</p>
+                            <p class="age-schedule text-schedule">16+</p>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <p class="desc-schedule desc-first text-schedule">Постановка: МТЮЗ</p>
+                            <p class="desc-schedule text-schedule">Режиссер: Кама Гинкас</p>
+                            <p class="desc-schedule text-schedule">В ролях: Игорь Гордин, Мария Луговая,
+                                Александр Тараньжин, Алексей Дубровский,
+                                Михаил Парыгин
+                            </p>
+
+                        </div>
+
+                        <div class="col-sm-3">
+                            <p class="time-start text-schedule">
+                                12:00
+                            </p>
+                            <p class="duration text-schedule">
+                                3 часа,
+                            </p>
+                            <p class="is-intermission text-schedule">
+                                без антракта
+                            </p>
+                        </div>
                     </div>
-
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <h3 class="name-schedule text-schedule">О странностях любви</h3>
-                        </a>
-                        <p class="info-schedule text-schedule">Антон Чехов // Драма</p>
-                        <p class="age-schedule text-schedule">16+</p>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <p class="desc-schedule desc-first text-schedule">Постановка: МТЮЗ</p>
-                        <p class="desc-schedule text-schedule">Режиссер: Кама Гинкас</p>
-                        <p class="desc-schedule text-schedule">В ролях: Игорь Гордин, Мария Луговая,
-                            Александр Тараньжин, Алексей Дубровский,
-                            Михаил Парыгин
-                        </p>
-
-                    </div>
-
-                    <div class="col-sm-3">
-                        <p class="time-start text-schedule">
-                            12:00
-                        </p>
-                        <p class="duration text-schedule">
-                            3 часа,
-                        </p>
-                        <p class="is-intermission text-schedule">
-                            без антракта
-                        </p>
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <img src="{% static "images/test/s4.png" %}" class="img-responsive img-performances">
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <h3 class="name-schedule text-schedule">О странностях любви</h3>
-                        </a>
-                        <p class="info-schedule text-schedule">Антон Чехов // Драма</p>
-                        <p class="age-schedule text-schedule">16+</p>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <p class="desc-schedule desc-first text-schedule">Постановка: МТЮЗ</p>
-                        <p class="desc-schedule text-schedule">Режиссер: Кама Гинкас</p>
-                        <p class="desc-schedule text-schedule">В ролях: Игорь Гордин, Мария Луговая,
-                            Александр Тараньжин, Алексей Дубровский,
-                            Михаил Парыгин
-                        </p>
-
-                    </div>
-
-                    <div class="col-sm-3">
-                        <p class="time-start text-schedule">
-                            12:00
-                        </p>
-                        <p class="duration text-schedule">
-                            3 часа,
-                        </p>
-                        <p class="is-intermission text-schedule">
-                            без антракта
-                        </p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <img src="{% static "images/test/s2.png" %}" class="img-responsive img-performances">
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <h3 class="name-schedule text-schedule">О странностях любви</h3>
-                        </a>
-                        <p class="info-schedule text-schedule">Антон Чехов // Драма</p>
-                        <p class="age-schedule text-schedule">16+</p>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <p class="desc-schedule desc-first text-schedule">Постановка: МТЮЗ</p>
-                        <p class="desc-schedule text-schedule">Режиссер: Кама Гинкас</p>
-                        <p class="desc-schedule text-schedule">В ролях: Игорь Гордин, Мария Луговая,
-                            Александр Тараньжин, Алексей Дубровский,
-                            Михаил Парыгин
-                        </p>
-
-                    </div>
-
-                    <div class="col-sm-3">
-                        <p class="time-start text-schedule">
-                            12:00
-                        </p>
-                        <p class="duration text-schedule">
-                            3 часа,
-                        </p>
-                        <p class="is-intermission text-schedule">
-                            без антракта
-                        </p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <img src="{% static "images/test/s3.png" %}" class="img-responsive img-performances">
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <h3 class="name-schedule text-schedule">О странностях любви</h3>
-                        </a>
-                        <p class="info-schedule text-schedule">Антон Чехов // Драма</p>
-                        <p class="age-schedule text-schedule">16+</p>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <p class="desc-schedule desc-first text-schedule">Постановка: МТЮЗ</p>
-                        <p class="desc-schedule text-schedule">Режиссер: Кама Гинкас</p>
-                        <p class="desc-schedule text-schedule">В ролях: Игорь Гордин, Мария Луговая,
-                            Александр Тараньжин, Алексей Дубровский,
-                            Михаил Парыгин
-                        </p>
-
-                    </div>
-
-                    <div class="col-sm-3">
-                        <p class="time-start text-schedule">
-                            12:00
-                        </p>
-                        <p class="duration text-schedule">
-                            3 часа,
-                        </p>
-                        <p class="is-intermission text-schedule">
-                            без антракта
-                        </p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
 
             <div class="schedule__mobile">
                 <div class="row">
-                    <div class="col-xs-6">
-                        <a href="#">
-                            <img src="{% static "images/test/s4.png" %}" class="img-responsive img-performances">
-                        </a>
-                        <a href="#">
-                            <h3 class="name-schedule text-schedule">О странностях любви</h3>
-                        </a>
-                        <p class="info text-schedule">
-                            16+, 12:00, 3 часа, без антракта
-                        </p>
-                    </div>
-
-                    <div class="col-xs-6">
-                        <a href="#">
-                            <img src="{% static "images/test/s3.png" %}" class="img-responsive img-performances">
-                        </a>
-                        <a href="#">
-                            <h3 class="name-schedule text-schedule">О странностях любви</h3>
-                        </a>
-                        <p class="info text-schedule">
-                            16+, 12:00, 3 часа, без антракта
-                        </p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6">
-                        <a href="#">
-                            <img src="{% static "images/test/s2.png" %}" class="img-responsive img-performances">
-                        </a>
-                        <a href="#">
-                            <h3 class="name-schedule text-schedule">О странностях любви</h3>
-                        </a>
-                        <p class="info text-schedule">
-                            16+, 12:00, 3 часа, без антракта
-                        </p>
-                    </div>
-
-                    <div class="col-xs-6">
-                        <a href="#">
-                            <img src="{% static "images/test/s1.png" %}" class="img-responsive img-performances">
-                        </a>
-                        <a href="#">
-                            <h3 class="name-schedule text-schedule">О странностях любви</h3>
-                        </a>
-                        <p class="info text-schedule">
-                            16+, 12:00, 3 часа, без антракта
-                        </p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6">
-                        <a href="#">
-                            <img src="{% static "images/test/s4.png" %}" class="img-responsive img-performances">
-                        </a>
-                        <a href="#">
-                            <h3 class="name-schedule text-schedule">О странностях любви</h3>
-                        </a>
-                        <p class="info text-schedule">
-                            16+, 12:00, 3 часа, без антракта
-                        </p>
-                    </div>
-
-                    <div class="col-xs-6">
-                        <a href="#">
-                            <img src="{% static "images/test/s4.png" %}" class="img-responsive img-performances">
-                        </a>
-                        <a href="#">
-                            <h3 class="name-schedule text-schedule">О странностях любви</h3>
-                        </a>
-                        <p class="info text-schedule">
-                            16+, 12:00, 3 часа, без антракта
-                        </p>
-                    </div>
+                    {% for performances in performances_schedule %}
+                        <div class="col-xs-6">
+                            <a href="#">
+                                <img src="{{ performances.thumbnail.url }}" class="img-responsive img-performances">
+                            </a>
+                            <a href="#">
+                                <h3 class="name-schedule text-schedule">{{ performances.name }}</h3>
+                            </a>
+                            <p class="info text-schedule">
+                                16+, 12:00, 3 часа, без антракта
+                            </p>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
