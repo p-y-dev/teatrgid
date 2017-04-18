@@ -30,8 +30,6 @@ class AdminModelWithCity(admin.ModelAdmin):
             elif db_field.name == "directors":
                 kwargs["queryset"] = Directors.objects.filter(city=request.user.city)
 
-            print(db_field.name)
-
         return super().formfield_for_manytomany(db_field, request, **kwargs)
 
     def get_exclude(self, request, obj=None):

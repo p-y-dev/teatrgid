@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models import Q
 from datetime import datetime
 
 from ..models import GeneralModel, Gallery
@@ -105,7 +104,12 @@ class Performance(GeneralModel):
         verbose_name="Отзывы"
     )
 
-    top = models.BooleanField(
-        verbose_name="Выводить в топ?",
+    top_today = models.BooleanField(
+        verbose_name="Выводить в топ сегодня?",
+        default=False
+    )
+
+    top_soon = models.BooleanField(
+        verbose_name="Выводить в топ скоро?",
         default=False
     )
