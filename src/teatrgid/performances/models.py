@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 from datetime import datetime
 
 from ..models import GeneralModel, Gallery

@@ -1,5 +1,5 @@
 from django.views.generic.base import TemplateView
-from .performances.performances import PerfrmancesObjs
+from .performances.performances import RequestsPerformances
 
 
 class HomePage(TemplateView):
@@ -8,7 +8,7 @@ class HomePage(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomePage, self).get_context_data(**kwargs)
 
-        performances = PerfrmancesObjs(self.request)
+        performances = RequestsPerformances(self.request)
 
         context.update({
             "performances_affiche": performances.get_distinct(),

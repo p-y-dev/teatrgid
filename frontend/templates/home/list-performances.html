@@ -1,6 +1,6 @@
 {% load staticfiles %}
 
-{% if performances.count == 0 %}
+{% if performances_affiche.count == 0 %}
     <h3 class="not-performances">
         В ближайшее время Вашем городе нет спектаклей
     </h3>
@@ -62,7 +62,12 @@
                             <a href="#">
                                 <h3 class="name-schedule text-schedule">{{ performances.name }}</h3>
                             </a>
-                            <p class="info-schedule text-schedule">Драма</p>
+                            <p class="info-schedule text-schedule">
+                                {% for genre in performances.genres.all %}
+                                    {{ genre.name }},
+                                {% endfor %}
+                            </p>
+
                             <p class="age-schedule text-schedule">16+</p>
                         </div>
 
