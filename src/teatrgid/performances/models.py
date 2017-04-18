@@ -71,7 +71,7 @@ class Performance(GeneralModel):
         default=""
     )
 
-    theaters = models.ManyToManyField(
+    theater = models.ForeignKey(
         Theaters,
         verbose_name="Театры",
         default=""

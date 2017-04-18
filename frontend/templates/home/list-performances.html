@@ -64,7 +64,7 @@
                             </a>
                             <p class="info-schedule text-schedule">
                                 {% for genre in performances.genres.all %}
-                                    {{ genre.name }},
+                                    {{ genre.name }}{% if not forloop.last %}, {% endif %}
                                 {% endfor %}
                             </p>
 
@@ -72,11 +72,18 @@
                         </div>
 
                         <div class="col-sm-3">
-                            <p class="desc-schedule desc-first text-schedule">Постановка: МТЮЗ</p>
-                            <p class="desc-schedule text-schedule">Режиссер: Кама Гинкас</p>
-                            <p class="desc-schedule text-schedule">В ролях: Игорь Гордин, Мария Луговая,
-                                Александр Тараньжин, Алексей Дубровский,
-                                Михаил Парыгин
+                            <p class="desc-schedule desc-first text-schedule">Постановка: {{ performances.theater.name }}</p>
+                            <p class="desc-schedule text-schedule">
+                                Режиссер:
+                                {% for director in performances.directors.all %}
+                                    {{ director.name }}{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </p>
+                            <p class="desc-schedule text-schedule">
+                                В ролях:
+                                {% for actor in performances.actors.all %}
+                                    {{ actor.name }}{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
                             </p>
 
                         </div>
