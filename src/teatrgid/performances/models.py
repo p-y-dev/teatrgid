@@ -104,12 +104,19 @@ class Performance(GeneralModel):
         verbose_name="Отзывы"
     )
 
-    top_today = models.BooleanField(
-        verbose_name="Выводить в топ сегодня?",
-        default=False
+    NOT = "not"
+    TODAY = "today"
+    SOON = "soon"
+
+    TOP_BLOCK = (
+        (NOT, "Не выводить"),
+        (TODAY, "Сегодня"),
+        (SOON, "Скоро"),
     )
 
-    top_soon = models.BooleanField(
-        verbose_name="Выводить в топ скоро?",
-        default=False
+    top = models.CharField(
+        verbose_name="В какой блок выводить спектакль на главной?",
+        max_length=6,
+        choices=TOP_BLOCK,
+        default=NOT
     )

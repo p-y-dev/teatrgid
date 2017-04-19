@@ -32,10 +32,6 @@ class RequestsPerformances(object):
 
         return self.q_performance
 
-    def get_top_today(self):
-        self.last_q = self.q_performance.filter(top_today=True)
-        return self.last_q
-
     def get_distinct(self):
         self.last_q = self.q_performance.distinct("name")
         return self.last_q
