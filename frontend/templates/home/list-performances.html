@@ -17,6 +17,9 @@
 
     <div class="tab-content">
         <div id="list-performances-poster" class="poster tab-pane fade in active">
+            <div class="row">
+                <h3 class="title-schedule">Сегодня и Завтра <i class="fa fa-calendar" aria-hidden="true"></i></h3>
+            </div>
             <div class="poster__desktop">
                 <div class="row">
                     {% for performance in performances_affiche %}
@@ -47,41 +50,41 @@
 
         <div id="list-performances-schedule" class="schedule tab-pane fade">
             <div class="row">
-                <h3 class="title-schedule">сегодня,<span class="date"> 18 марта</span>, суббота <i class="fa fa-calendar" aria-hidden="true"></i></h3>
+                <h3 class="title-schedule">Сегодня и Завтра <i class="fa fa-calendar" aria-hidden="true"></i></h3>
             </div>
             <div class="schedule__desktop">
-                {% for performances in performances_schedule %}
+                {% for performance_time in performances_schedule %}
                     <div class="row">
                         <div class="col-sm-3">
                             <a href="#">
-                                <img src="{{ performances.thumbnail.url }}" class="img-responsive img-performances">
+                                <img src="{{ performance_time.performance.thumbnail.url }}" class="img-responsive img-performances">
                             </a>
                         </div>
 
                         <div class="col-sm-3">
                             <a href="#">
-                                <h3 class="name-schedule text-schedule">{{ performances.name }}</h3>
+                                <h3 class="name-schedule text-schedule">{{ performance_time.performance.name }}</h3>
                             </a>
                             <p class="info-schedule text-schedule">
-                                {% for genre in performances.genres.all %}
+                                {% for genre in performance_time.performance.genres.all %}
                                     {{ genre.name }}{% if not forloop.last %}, {% endif %}
                                 {% endfor %}
                             </p>
 
-                            <p class="age-schedule text-schedule">16+</p>
+                            <p class="age-schedule text-schedule">{{ performance_time.performance.age_restrictions }}</p>
                         </div>
 
                         <div class="col-sm-3">
-                            <p class="desc-schedule desc-first text-schedule">Постановка: {{ performances.theater.name }}</p>
+                            <p class="desc-schedule desc-first text-schedule">Постановка: {{ performance_time.performance.theater.name }}</p>
                             <p class="desc-schedule text-schedule">
                                 Режиссер:
-                                {% for director in performances.directors.all %}
+                                {% for director in performance_time.performance.directors.all %}
                                     {{ director.name }}{% if not forloop.last %}, {% endif %}
                                 {% endfor %}
                             </p>
                             <p class="desc-schedule text-schedule">
                                 В ролях:
-                                {% for actor in performances.actors.all %}
+                                {% for actor in performance_time.performance.actors.all %}
                                     {{ actor.name }}{% if not forloop.last %}, {% endif %}
                                 {% endfor %}
                             </p>
@@ -90,13 +93,17 @@
 
                         <div class="col-sm-3">
                             <p class="time-start text-schedule">
-                                12:00
+                                {{ performance_time.date_time|date:"j.m.Y / H:i" }}
                             </p>
                             <p class="duration text-schedule">
-                                3 часа,
+                                {{ performance_time.duration|date:"H:i" }} ч.,
                             </p>
                             <p class="is-intermission text-schedule">
-                                без антракта
+                                {% if performance_time.is_intermission %}
+                                    Количество антрактов: {{ performance_time.count_intermission }}
+                                {% else %}
+                                    без антракта
+                                {% endif %}
                             </p>
                         </div>
                     </div>
@@ -105,16 +112,25 @@
 
             <div class="schedule__mobile">
                 <div class="row">
-                    {% for performances in performances_schedule %}
+                    {% for performance_time in performances_schedule %}
                         <div class="col-xs-6">
                             <a href="#">
-                                <img src="{{ performances.thumbnail.url }}" class="img-responsive img-performances">
+                                <img src="{{ performance_time.performance.thumbnail.url }}" class="img-responsive img-performances">
                             </a>
                             <a href="#">
-                                <h3 class="name-schedule text-schedule">{{ performances.name }}</h3>
+                                <h3 class="name-schedule text-schedule">{{ performance_time.performance.name }}</h3>
                             </a>
+                            <p class="info date-time">
+                                {{ performance_time.date_time|date:"j.m.Y/H:i" }}
+                            </p>
                             <p class="info text-schedule">
-                                16+, 12:00, 3 часа, без антракта
+                                {{ performance_time.performance.age_restrictions }},
+                                {{ performance_time.duration|date:"H:i" }} ч.,
+                                {% if performance_time.is_intermission %}
+                                    Количество антрактов: {{ performance_time.count_intermission }}
+                                {% else %}
+                                    без антракта
+                                {% endif %}
                             </p>
                         </div>
                     {% endfor %}

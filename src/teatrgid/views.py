@@ -10,13 +10,15 @@ class HomePage(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomePage, self).get_context_data(**kwargs)
 
+        current_datetime = datetime.now()
+
         performances = RequestsPerformances(self.request.city_obj)
 
-        performances.request_current_performance_date_gte(datetime.now())
+        performances.request_performance_current_day_tomorrow(current_datetime)
 
         context.update({
             "performances_affiche": performances.get_distinct(),
-            "performances_schedule": performances.get_sorted_date_time(),
+            "performances_schedule": performances.request_dates_event_current_day_tomorrow(current_datetime),
         })
 
         return context

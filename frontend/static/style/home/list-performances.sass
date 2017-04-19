@@ -1,6 +1,25 @@
 @import "../colors.sass"
 @import "../fonts.css"
 
+.title-schedule
+    text-align: center
+    margin: 70px 0px 0px 0px
+    font-size: 30px
+    font-family: "GothamProRegular"
+    color: #393939
+
+    .date
+        color: #000000
+        font-weight: 500 !important
+
+    @media(max-width: 991px)
+        font-size: 24px
+        margin: 30px 0px 0px 0px
+
+    @media(max-width: 767px)
+        font-size: 18px
+        margin: 18px 0px 0px 0px
+
 .not-performances
     font-family: "GothamProRegular"
     text-align: center
@@ -97,7 +116,7 @@ a
                     font-size: 20px
                     color: $gold
                     border: 3px solid $gold
-                    padding: 10px 10px
+                    padding: 10px 8px
                     margin-top: 10px
                     display: inline-block
                     border-radius: 50%
@@ -116,7 +135,7 @@ a
 
                     p
                         font-size: 19px
-                        padding: 4px 6px
+                        padding: 5px 4px
 
                 @media(max-width: 991px)
                     img
@@ -127,7 +146,7 @@ a
 
                     p
                         font-size: 14px
-                        padding: 5px 0px 2px 4px
+                        padding: 5px 0px 2px 3px
                         border: 2px solid $gold
 
         @media(max-width: 767px)
@@ -162,25 +181,6 @@ a
 .schedule
     .row
         margin: 0px
-
-        .title-schedule
-            text-align: center
-            margin: 70px 0px 0px 0px
-            font-size: 30px
-            font-family: "GothamProRegular"
-            color: #393939
-
-            .date
-                color: #000000
-                font-weight: 500 !important
-
-            @media(max-width: 991px)
-                font-size: 24px
-                margin: 30px 0px 0px 0px
-
-            @media(max-width: 767px)
-                font-size: 18px
-                margin: 18px 0px 0px 0px
 
     &__desktop
         .row
@@ -219,9 +219,9 @@ a
 
             .time-start
                 font-family: "GothamProMedium"
-                font-size: 30px
+                font-size: 22px
                 margin-top: 25px
-                margin-bottom: 10px
+                margin-bottom: 0px
 
             .duration, .is-intermission
                 font-size: 16px
@@ -238,7 +238,7 @@ a
                     font-size: 14px
 
                 .time-start
-                    font-size: 24px
+                    font-size: 18px
 
                 .duration, .is-intermission
                     font-size: 14px
@@ -261,7 +261,7 @@ a
                     font-size: 14px
 
                 .time-start
-                    font-size: 24px
+                    font-size: 16px
                     margin-top: 50px
 
                 .duration, .is-intermission
@@ -300,3 +300,7 @@ a
                     font-size: 14px
                     margin-top: 5px
                     margin-bottom: 0px
+
+                .date-time
+                    font-family: "GothamProMedium"
+
