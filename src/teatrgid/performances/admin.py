@@ -54,6 +54,20 @@ class PerformanceAdminForm(ModelForm):
                     "Сейчас в топе следующие спектакли (" + performances.display_name() + ")"
                 )
 
+        if top == SOON:
+            performances.request_week_ahead(datetime.now())
+            performances.get_distinct(parameter_distinct)
+
+            if performances.requests.count() >= 3:
+
+                if self.current_performance_in_top(performances.requests, name_current_performances):
+                    return top
+
+                raise forms.ValidationError(
+                    "В 'топ скроро' могут быть максимум 3 спектакля. " + \
+                    "Сейчас в топе следующие спектакли (" + performances.display_name() + ")"
+                )
+
         return top
 
 
