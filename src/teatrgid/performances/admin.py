@@ -37,12 +37,11 @@ class PerformanceAdminForm(ModelForm):
             return top
 
         performances = RequestsPerformances(self.request.user.city)
-        parameter_distinct = "name"
         name_current_performances = self.cleaned_data['name']
+        current_date_time = datetime.now()
 
         if top == TODAY:
-            performances.request_performance_today(datetime.now())
-            performances.get_distinct(parameter_distinct)
+            performances.get_top_today(current_date_time)
 
             if performances.requests.count() >= 3:
 
@@ -55,8 +54,7 @@ class PerformanceAdminForm(ModelForm):
                 )
 
         if top == SOON:
-            performances.request_week_ahead(datetime.now())
-            performances.get_distinct(parameter_distinct)
+            performances.get_week_ahead(current_date_time)
 
             if performances.requests.count() >= 3:
 
