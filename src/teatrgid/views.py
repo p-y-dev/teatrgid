@@ -13,13 +13,20 @@ class HomePage(TemplateView):
         current_datetime = datetime.now()
 
         performances = RequestsPerformances(self.request.city_obj)
+        top_today_performances = performances.get_top_today(current_datetime)
 
-        performances.request_performance_current_day_tomorrow(current_datetime)
+        performances = RequestsPerformances(self.request.city_obj)
+        week_ahead_performances = performances.get_week_ahead(current_datetime)
 
-        parameter_distinct = "name"
+        performances = RequestsPerformances(self.request.city_obj)
+        performances_affiche = performances.get_affiche(current_datetime, day_tomorrow=True)
+        performances_schedule = performances.get_schedule(current_datetime, day_tomorrow=True)
+
         context.update({
-            "performances_affiche": performances.get_distinct(parameter_distinct),
-            "performances_schedule": performances.request_dates_event_current_day_tomorrow(current_datetime),
+            "top_today_performances": top_today_performances,
+            "week_ahead_performances": week_ahead_performances,
+            "performances_affiche": performances_affiche,
+            "performances_schedule": performances_schedule,
         })
 
         return context

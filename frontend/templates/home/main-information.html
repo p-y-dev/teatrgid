@@ -3,23 +3,34 @@
 <div class="main-info__today col-xs-6 col-sm-3">
     <div class="title">
         <h2>Сегодня</h2>
-        <a href="#">18 марта, суббота</a>
+        <a href="#">{% now "j M. l" %}</a>
         <div class="triangle"></div>
     </div>
-    <a href="#">
-        <div class="block" style="background-image: url({% static "images/test/s1.png" %})">
-            <div class="substrate"></div>
-        </div>
-    </a>
+    {% for top_performance in top_today_performances %}
+        {% if forloop.first %}
+            <a id="top-today-perf-{{ forloop.counter0 }}" href="#">
+        {% else %}
+            <a class="hide-performance" id="top-today-perf-{{ forloop.counter0 }}" href="#">
+        {% endif %}
+            <div class="block" style="background-image: url({{ top_performance.thumbnail.url }})">
+                <div class="substrate"></div>
+            </div>
+        </a>
+    {% endfor %}
 </div>
 
 <div class="main-info__soon col-xs-6 col-sm-3">
-
-    <a href="#">
-        <div class="block" style="background-image: url({% static "images/test/s2.png" %})">
-            <div class="substrate"></div>
-        </div>
-    </a>
+    {% for top_performance in week_ahead_performances %}
+        {% if forloop.first %}
+            <a id="top-week-ahead-perf-{{ forloop.counter0 }}" href="#">
+        {% else %}
+            <a class="hide-performance" id="top-week-ahead-perf-{{ forloop.counter0 }}" href="#">
+        {% endif %}
+            <div class="block" style="background-image: url({{ top_performance.thumbnail.url }})">
+                <div class="substrate"></div>
+            </div>
+        </a>
+    {% endfor %}
     <div class="title_soon">
         <h2>Скоро</h2>
         <a href="#">посмотреть расписание</a>
