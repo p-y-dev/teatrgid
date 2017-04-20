@@ -16,38 +16,45 @@ class DatesEventInline(admin.TabularInline):
 
 
 class PerformanceAdminForm(ModelForm):
+    def current_performance_in_top(self, performances, name_current_performances):
+        is_top = False
 
-    def clean_top_today(self):
-        top_today_state = self.cleaned_data['top_today']
-        top_soon_state = self.cleaned_data['top_today']
-        name_performance = self.cleaned_data['name']
+        for top_today_performance in performances:
+            if name_current_performances == top_today_performance.name:
+                is_top = True
+                return is_top
 
-        # performances = RequestsPerformances(self.request.user.city)
-        # performances.request_performance_today(datetime.now())
-        # performances.get_top_today()
-        # count_top_today = performances.last_q.count()
-        #
-        # is_top = False
-        # for top_today_performance in performances.last_q:
-        #     if name_performance == top_today_performance.name:
-        #         is_top = True
-        #         break
-        #
-        # if is_top and top_soon_state:
-        #     raise forms.ValidationError(
-        #         "'топ сегодня' и 'топ скоро' не могут быть активны одновременно"
-        #     )
-        #
-        # if count_top_today >= 3 and top_today_state:
-        #     if is_top:
-        #         return top_today_state
-        #
-        #     raise forms.ValidationError(
-        #         "В 'топ сегодня' могут быть максимум 3 спектакля. " + \
-        #         "Сейчас в топе следующие спектакли (" + performances.display_name() + ")"
-        #     )
-        #
-        return top_today_state
+        return is_top
+
+    def clean_top(self):
+        NOT = "not"
+        TODAY = "today"
+        SOON = "soon"
+
+        top = self.cleaned_data['top']
+
+        if top == NOT:
+            return top
+
+        performances = RequestsPerformances(self.request.user.city)
+        parameter_distinct = "name"
+        name_current_performances = self.cleaned_data['name']
+
+        if top == TODAY:
+            performances.request_performance_today(datetime.now())
+            performances.get_distinct(parameter_distinct)
+
+            if performances.requests.count() >= 3:
+
+                if self.current_performance_in_top(performances.requests, name_current_performances):
+                    return top
+
+                raise forms.ValidationError(
+                    "В 'топ сегодня' могут быть максимум 3 спектакля. " + \
+                    "Сейчас в топе следующие спектакли (" + performances.display_name() + ")"
+                )
+
+        return top
 
 
 class PerformanceAdmin(AdminModelWithCity):

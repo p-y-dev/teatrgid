@@ -21,11 +21,15 @@ class AdminModelWithCity(admin.ModelAdmin):
 
     form = ModelForm
 
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "theater":
+            kwargs["queryset"] = Theaters.objects.filter(city=request.user.city)
+
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
     def formfield_for_manytomany(self, db_field, request, **kwargs):
         if not request.user.is_superuser:
-            if db_field.name == "theaters":
-                kwargs["queryset"] = Theaters.objects.filter(city=request.user.city)
-            elif db_field.name == "actors":
+            if db_field.name == "actors":
                 kwargs["queryset"] = Actors.objects.filter(city=request.user.city)
             elif db_field.name == "directors":
                 kwargs["queryset"] = Directors.objects.filter(city=request.user.city)

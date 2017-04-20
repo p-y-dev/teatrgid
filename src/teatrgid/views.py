@@ -16,8 +16,9 @@ class HomePage(TemplateView):
 
         performances.request_performance_current_day_tomorrow(current_datetime)
 
+        parameter_distinct = "name"
         context.update({
-            "performances_affiche": performances.get_distinct(),
+            "performances_affiche": performances.get_distinct(parameter_distinct),
             "performances_schedule": performances.request_dates_event_current_day_tomorrow(current_datetime),
         })
 

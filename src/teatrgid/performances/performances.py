@@ -41,6 +41,6 @@ class RequestsPerformances(object):
 
         return self.requests
 
-    def get_distinct(self):
-        self.requests = self.requests.distinct("name")
+    def get_distinct(self, parameter_distinct):
+        self.requests = self.requests.distinct(parameter_distinct)
         return self.requests
