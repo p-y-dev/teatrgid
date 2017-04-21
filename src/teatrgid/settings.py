@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'teatrgid.performances',
     'teatrgid.theaters',
     'teatrgid.persons',
+    'teatrgid.thirdparty_resources'
 ]
 
 MIDDLEWARE = [

@@ -1,4 +1,15 @@
 (function() {
+    function activateChangePerformances(id_top_div, count_top_block, time_change, id_blocks_change, class_block_change) {
+        if($("div").is(id_top_div) && count_top_block > 1) {
+            changePerformances(
+                time_change,
+                count_top_block,
+                id_blocks_change,
+                class_block_change
+            );
+        }
+    }
+
     function changePerformances(time, count_top_block, id_blocks_change, class_block_change) {
         var i = 0;
         $(class_block_change).addClass("hide-performance");
@@ -36,21 +47,23 @@
 
         var count_top_block = $(is_top_today_perf).data("count");
         if(div_top.is(is_top_today_perf) && count_top_block > 1) {
-            changePerformances(
-                time=3000,
+            activateChangePerformances(
+                is_top_today_perf,
                 count_top_block,
-                id_blocks_change="#top-today-perf-",
-                class_block_change=".top-tody-performance"
+                time_change = 3000,
+                "#top-today-perf-",
+                ".top-tody-performance"
             );
         }
 
         count_top_block = $(is_top_week_ahead_perf).data("count");
         if(div_top.is(is_top_week_ahead_perf) && count_top_block > 1) {
-            changePerformances(
-                time=6000,
+            activateChangePerformances(
+                is_top_week_ahead_perf,
                 count_top_block,
-                id_blocks_change="#top-week-ahead-perf-",
-                class_block_change=".top-week-ahead-performance"
+                time_change=6000,
+                "#top-week-ahead-perf-",
+                ".top-week-ahead-performance"
             );
         }
 
