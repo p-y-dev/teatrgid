@@ -8,3 +8,4 @@ Unidecode
 django-ipware
 Pillow
 django-admin-sortable2
+easy-thumbnails

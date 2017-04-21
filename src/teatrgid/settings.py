@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'compressor',
     'singlemodeladmin',
     'adminsortable2',
+    'easy_thumbnails',
 
     'teatrgid.custom_user',
     'teatrgid.general_information',

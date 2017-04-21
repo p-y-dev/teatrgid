@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load thumbnail %}
 
 <div class="main-info__today col-xs-6 col-sm-3">
     <div class="title">
@@ -15,7 +16,7 @@
             {% else %}
                 <a class="hide-performance top-tody-performance" id="top-today-perf-{{ forloop.counter0 }}" href="#">
             {% endif %}
-                <div class="block" style="background-image: url({{ top_performance.thumbnail.url }})">
+                <div class="block" style="background-image: url({% thumbnail top_performance.thumbnail 290x415 %})">
                     <div class="substrate"></div>
                 </div>
             </a>
@@ -33,7 +34,7 @@
             {% else %}
                 <a class="hide-performance top-week-ahead-performance" id="top-week-ahead-perf-{{ forloop.counter0 }}" href="#">
             {% endif %}
-                <div class="block" style="background-image: url({{ top_performance.thumbnail.url }})">
+                <div class="block" style="background-image: url({% thumbnail top_performance.thumbnail 290x415 %})">
                     <div class="substrate"></div>
                 </div>
             </a>
@@ -57,11 +58,11 @@
         </div>
     </a>
 
-    <a href="#">
-        <div class="advice block" style="background-image: url({% static "images/test/advice.png" %})">
+    <a target="_blank" href="{{ thirdparty_resources.link }}">
+        <div class="advice block" style="background-image: url({% thumbnail thirdparty_resources.thumbnail 290x245 %})">
             <div class="substrate"></div>
             <h2>
-                Что надеть в театр?
+                {{ thirdparty_resources.name }}
             </h2>
         </div>
     </a>

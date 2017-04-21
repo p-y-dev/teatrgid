@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load thumbnail %}
 
 {% if performances_affiche.count == 0 %}
     <h3 class="not-performances">
@@ -25,11 +26,15 @@
                     {% for performance in performances_affiche %}
                         <div class="col-sm-3">
                             <a href="#">
-                                <img src="{{ performance.thumbnail.url }}" class="img-responsive img-performances">
+                                <img src="{% thumbnail performance.thumbnail 260x370 crop %}" class="img-responsive img-performances">
                                 <h3>{{ performance.name }}</h3>
                                 <p>{{ performance.rating }}</p>
                             </a>
                         </div>
+                        {% if forloop.counter|divisibleby:4 %}
+                            </div>
+                            <div class="row">
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -39,10 +44,14 @@
                     {% for performance in performances_affiche %}
                         <div class="col-xs-6">
                             <a href="#">
-                                <img src="{{ performance.thumbnail.url }}" class="img-responsive img-performances">
+                                <img src="{% thumbnail performance.thumbnail 190x180 %}" class="img-responsive img-performances">
                                 <h3><span>3.3</span> {{ performance.name }}</h3>
                             </a>
                         </div>
+                        {% if forloop.counter|divisibleby:2 %}
+                            </div>
+                            <div class="row">
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -57,7 +66,7 @@
                     <div class="row">
                         <div class="col-sm-3">
                             <a href="#">
-                                <img src="{{ performance_time.performance.thumbnail.url }}" class="img-responsive img-performances">
+                                <img src="{% thumbnail performance_time.performance.thumbnail 160x230 %}" class="img-responsive img-performances">
                             </a>
                         </div>
 
@@ -115,7 +124,7 @@
                     {% for performance_time in performances_schedule %}
                         <div class="col-xs-6">
                             <a href="#">
-                                <img src="{{ performance_time.performance.thumbnail.url }}" class="img-responsive img-performances">
+                                <img src="{% thumbnail performance_time.performance.thumbnail 190x180 %}" class="img-responsive img-performances">
                             </a>
                             <a href="#">
                                 <h3 class="name-schedule text-schedule">{{ performance_time.performance.name }}</h3>
@@ -133,6 +142,10 @@
                                 {% endif %}
                             </p>
                         </div>
+                        {% if forloop.counter|divisibleby:2 %}
+                            </div>
+                            <div class="row">
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

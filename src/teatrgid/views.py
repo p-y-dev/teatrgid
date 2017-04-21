@@ -1,7 +1,10 @@
+import random
 from django.views.generic.base import TemplateView
 from .performances.performances import RequestsPerformances
 
 from datetime import datetime
+
+from .thirdparty_resources.models import ThirdpartyResources
 
 
 class HomePage(TemplateView):
@@ -22,11 +25,16 @@ class HomePage(TemplateView):
         performances_affiche = performances.get_affiche(current_datetime, day_tomorrow=True)
         performances_schedule = performances.get_schedule(current_datetime, day_tomorrow=True)
 
+        thirdparty_resources = ThirdpartyResources.objects.filter(city=self.request.city_obj).order_by('?').first()
+
+        print(thirdparty_resources)
+
         context.update({
             "top_today_performances": top_today_performances,
             "week_ahead_performances": week_ahead_performances,
             "performances_affiche": performances_affiche,
             "performances_schedule": performances_schedule,
+            "thirdparty_resources": thirdparty_resources
         })
 
         return context
