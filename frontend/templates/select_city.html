@@ -1,0 +1,54 @@
+{% load staticfiles %}
+{% load compress %}
+{% load i18n %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="icon" type="image/png" href="{% static "images/favicons/favicon.png" %}" sizes="30x30"/>
+        <title>Выбор города</title>
+
+        {% compress css %}
+            <link href="{% static 'packages/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+            <link href="{% static 'packages/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+            <link href="{% static 'style/main.sass' %}" rel="stylesheet" type="text/x-sass"/>
+            <link href="{% static 'style/select_city.sass' %}" rel="stylesheet" type="text/x-sass"/>
+        {% endcompress %}
+    </head>
+
+    <body>
+        <div class="container select-city">
+            <img class="img-responsive select-city__logo" src="{% static "images/logo/logo.png" %}">
+
+            <div class="col-xs-12 additional-div">
+                <div class="additional-text">
+                    <img src="{% static "images/icons/smile.png" %}">
+                    <p>
+                        Пожалуйста, выберите<br>
+                        город из списка, чтобы<br>
+                        воспользоваться сайтом
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-xs-12 list-city">
+                <ul>
+                    {% for city in list_city %}
+                        <li>
+                            <a href="#">
+                                {{ city.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% compress js %}
+            <script src="{% static 'packages/jquery/dist/jquery.min.js' %}"></script>
+            <script src="{% static 'packages/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+        {% endcompress %}
+    </body>
+</html>

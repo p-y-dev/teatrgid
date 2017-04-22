@@ -1,0 +1,88 @@
+@import "colors.sass"
+@import "fonts.css"
+
+body
+    padding: 0px !important
+
+.select-city
+    background-color: $white
+    height: 100vh
+
+    &__logo
+        margin: auto
+        margin-top: 50px
+
+        @media(max-width: 768px)
+            width: 200px
+
+    .additional-div
+        height: 175px
+
+        .additional-text
+            position: absolute
+            width: 540px
+            left: 50%
+            margin-left: -270px
+            margin-top: 70px
+
+            img, p
+                float: left
+
+            p
+                font-family: "GothamProMedium"
+                font-size: 25px
+                margin-left: 90px
+
+        @media(max-width: 768px)
+            height: 100px
+
+            .additional-text
+                width: 294px
+                margin-left: -147px
+                margin-top: 30px
+
+                img
+                    width: 70px
+                    margin-top: 5px
+
+                p
+                    font-size: 16px
+                    margin-left: 15px
+
+    .list-city
+        margin-top: 70px
+
+        ul
+            padding: 0px
+            text-align: center
+
+            li
+                list-style: none
+                display: inline-block
+                margin-left: 60px
+                transition: .3s
+                padding: 10px 0px
+
+                a
+                    font-size: 18px
+                    padding: 15px 40px
+                    font-family: "GothamProRegular"
+                    color: #393939
+
+                &:hover
+                    background-color: #edf5f7
+
+                    a
+                        text-decoration: none
+
+                @media(max-width: 992px)
+                    margin-left: 0px
+
+        @media(max-width: 768px)
+            margin-top: 20px
+
+            ul li
+                display: list-item
+
+                a
+                    font-size: 16px

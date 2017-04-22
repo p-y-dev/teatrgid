@@ -18,11 +18,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 
-from teatrgid.views import HomePage
+from teatrgid.views import home_page, select_city
 
 urlpatterns = [
-    url(r'^$', HomePage.as_view(), name="home"),
     url(r'^admin/', admin.site.urls),
+    url(r'^$', home_page, name="home"),
+    url(r'^select_city/', select_city, name="select city"),
 ]
 
 if settings.DEBUG:
