@@ -9,18 +9,23 @@ from teatrgid.general_information.models import ListCity
 
 class GeoIp(object):
 
-    def __init__(self, request):
+    def __init__(self):
+        self.ip_address = None
+
+    def get_city_geoip(self, request):
         if settings.DEBUG:
             self.ip_address = settings.TEST_IP
         else:
             self.ip_address = get_ip(request)
 
-    def adding_city_to_session(self, request):
-        name_city_user = request.session.get(settings.KEY_CITY_SESSION)
         name_city_user_db = self._get_city_name_in_db()
 
-        if not name_city_user or name_city_user != name_city_user_db:
-            request.session[settings.KEY_CITY_SESSION] = name_city_user_db
+        if name_city_user_db:
+            return name_city_user_db
+
+    def add_city_to_session(self, request, cty_name):
+        request.session[settings.KEY_CITY_SESSION] = cty_name
+        return request.session[settings.KEY_CITY_SESSION]
 
     def _get_city_name_in_db(self):
         if self.ip_address is None:

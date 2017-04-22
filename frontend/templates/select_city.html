@@ -38,7 +38,7 @@
                 <ul>
                     {% for city in list_city %}
                         <li>
-                            <a href="#">
+                            <a href="{% url "set_user_city" city_slug=city.slug %}">
                                 {{ city.name }}
                             </a>
                         </li>

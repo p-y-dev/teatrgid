@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.http import HttpResponseRedirect
+from django.urls import reverse, resolve
 
 from teatrgid.geoip import GeoIp
 
@@ -11,24 +12,37 @@ class CityMiddleware(object):
         self.get_response = get_response
 
     def __call__(self, request):
-        admin_url = "/admin"
 
+        url_name = resolve(request.path_info).url_name
+        if url_name == "select_city" or url_name == "set_user_city":
+            return self.get_response(request)
+
+        admin_url = "/admin"
         if request.path[:len(admin_url)] == admin_url:
             return self.get_response(request)
 
-        if not request.user.is_authenticated():
-            GeoIp(request).adding_city_to_session(request)
-            name_city_user = request.session[settings.KEY_CITY_SESSION]
+        if request.user.is_authenticated():
+            is_authenticated = True
 
         else:
+            is_authenticated = False
+
+        if is_authenticated:
             try:
                 name_city_user = request.user.city.name
 
             except AttributeError:
                 name_city_user = None
+        else:
+            geoip = GeoIp()
+            name_city_user = geoip.get_city_geoip(request)
+
+            if name_city_user is None:
+                name_city_user = request.session.get(settings.KEY_CITY_SESSION)
 
         if name_city_user is None:
-            return HttpResponseRedirect('http://convertonlinefree.com/WordToPDFRU.aspx')
+            return HttpResponseRedirect(reverse("select_city"))
+
         else:
             city = ListCity.objects.filter(name=name_city_user).get()
             request.city_obj = city
