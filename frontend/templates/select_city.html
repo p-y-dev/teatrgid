@@ -35,15 +35,7 @@
             </div>
 
             <div class="col-xs-12 list-city">
-                <ul>
-                    {% for city in list_city %}
-                        <li>
-                            <a href="{% url "set_user_city" city_slug=city.slug %}">
-                                {{ city.name }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
+                {% include "list_city.html" %}
             </div>
         </div>
         {% compress js %}

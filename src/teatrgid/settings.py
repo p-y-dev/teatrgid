@@ -35,7 +35,7 @@ KEY_CITY_SESSION = "city_user"
 # Новосибирск - 37.49.208.0
 # Москва - 5.62.157.0
 # Санкт-Петербург - 5.188.0.0
-TEST_IP = "37.49.208.0"
+TEST_IP = "37dwa.49.208.0"
 
 # Application definition
 
@@ -88,6 +88,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'teatrgid.general_information.context_processors.name_city_user',
+                'teatrgid.general_information.context_processors.list_city',
             ],
         },
     },

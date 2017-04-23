@@ -34,10 +34,7 @@ def home_page(request):
 
 
 def select_city(request):
-    list_city = ListCity.objects.all().order_by("name")
-
     return render(request, 'select_city.html', {
-        "list_city": list_city,
     })
 
 

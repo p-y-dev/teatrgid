@@ -1,5 +1,6 @@
 @import "colors.sass"
 @import "fonts.css"
+@import "list-city.sass"
 
 body
     padding: 0px !important
@@ -52,31 +53,11 @@ body
     .list-city
         margin-top: 70px
 
-        ul
-            padding: 0px
+        .city-list
             text-align: center
 
             li
-                list-style: none
-                display: inline-block
                 margin-left: 60px
-                transition: .3s
-                padding: 10px 0px
-
-                a
-                    font-size: 18px
-                    padding: 15px 40px
-                    font-family: "GothamProRegular"
-                    color: #393939
-
-                &:hover
-                    background-color: #edf5f7
-
-                    a
-                        text-decoration: none
-
-                @media(max-width: 992px)
-                    margin-left: 0px
 
         @media(max-width: 768px)
             margin-top: 20px

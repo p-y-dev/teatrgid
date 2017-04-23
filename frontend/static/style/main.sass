@@ -1,7 +1,8 @@
 @import "colors.sass"
 @import "fonts.css"
+@import "list-city.sass"
 
-$mobile-height-menu: 50px
+$mobile-height-menu: 70px
 
 body
     background-image: url(../images/background/texture.png)
@@ -26,6 +27,30 @@ body
     @media(max-width: 991px)
         font-size: 13px
 
+.modal
+    .modal-dialog
+        margin-top: 150px
+
+        .modal-content
+            border-radius: 0px
+            box-shadow: none
+
+            .title
+                font-family: "GothamProRegular"
+                color: #393939
+                text-align: center
+                margin: 10px 0px
+
+            .close
+                position: absolute
+                top: 5px
+                right: 10px
+                font-size: 30px
+                color: $dark-blue
+
+
+
+
 header
     height: 220px
     background-color: $white
@@ -33,7 +58,7 @@ header
     .desktop-menu
         display: block
 
-        .account
+        .account, .geo
             margin-top: 75px
             float: left
 
@@ -59,6 +84,14 @@ header
 
                 &__link-account
                     font-size: 16px
+
+        .geo
+            margin-left: 30px
+            &__link-account .img-arrow
+                margin-left: 0px
+
+            &__not-active img
+                opacity: 1 !important
 
         .logo
             position: absolute
@@ -178,29 +211,48 @@ header
         @media(max-width: 767px)
             display: block
 
+            .col-xs-12
+                padding-top: 10px
+
+            .geo
+                font-size: 14px
+                font-family: "GothamProRegular"
+                color: #818181
+                float: left
+
+                img
+                    width: 12px
+
+
             .btn-menu
                 color: #83b9cd
                 font-size: 21px
                 float: left
-                margin-left: 20px
-                margin-top: 15px
+                margin-left: 0px
+                margin-top: 0px
 
             .logo
                 float: left
-                width: 100px
-                margin-top: 15px
-                margin-left: 25px
+                width: 102px
+                margin-top: 2px
+                margin-left: 12px
 
-            .link-account img
+            .link-account
                 float: right
-                margin-right: 20px
-                margin-top: 15px
+                margin-right: 0px
+                margin-top: 0px
+                font-size: 14px
+                font-family: "GothamProRegular"
+                color: #818181
+
+                img
+                    width: 15px
 
             .btn-search
                 float: right
-                margin-right: 25px
+                margin-right: 0px
                 font-size: 18px
-                margin-top: 15px
+                margin-top: 0px
                 color: #83b9cd
 
     @media(max-width: 991px)
