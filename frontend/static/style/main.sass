@@ -2,7 +2,7 @@
 @import "fonts.css"
 @import "list-city.sass"
 
-$mobile-height-menu: 70px
+$mobile-height-menu: 80px
 
 body
     background-image: url(../images/background/texture.png)
@@ -48,8 +48,8 @@ body
                 font-size: 30px
                 color: $dark-blue
 
-
-
+            .city-list li a
+                    padding: 15px 20px
 
 header
     height: 220px
@@ -211,14 +211,16 @@ header
         @media(max-width: 767px)
             display: block
 
-            .col-xs-12
+            .main-panel
+                height: $mobile-height-menu
+
+            .user-info, .user-info
                 padding-top: 10px
 
             .geo
                 font-size: 14px
                 font-family: "GothamProRegular"
                 color: #818181
-                float: left
 
                 img
                     width: 12px
