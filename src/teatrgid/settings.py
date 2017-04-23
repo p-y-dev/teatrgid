@@ -35,7 +35,7 @@ KEY_CITY_SESSION = "city_user"
 # Новосибирск - 37.49.208.0
 # Москва - 5.62.157.0
 # Санкт-Петербург - 5.188.0.0
-TEST_IP = "37dwa.49.208.0"
+TEST_IP = "37.49.208.0"
 
 # Application definition
 
