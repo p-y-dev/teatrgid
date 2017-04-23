@@ -8,6 +8,9 @@
         <div class="triangle"></div>
     </div>
     {% if top_today_performances.count == 0  %}
+        <div class="block" style="background-image: url({% static "images/performance/not-performance.png" %})">
+            <div class="substrate not-active"></div>
+        </div>
     {% else %}
         <div class="is-top-today-perf" data-count="{{ top_today_performances.count }}"></div>
         {% for top_performance in top_today_performances %}
@@ -26,6 +29,9 @@
 
 <div class="main-info__soon col-xs-6 col-sm-3">
     {% if week_ahead_performances.count == 0  %}
+        <div class="block" style="background-image: url({% static "images/performance/not-performance.png" %})">
+            <div class="substrate not-active"></div>
+        </div>
     {% else %}
         <div class="is-top-week-ahead-perf" data-count="{{ week_ahead_performances.count }}"></div>
         {% for top_performance in week_ahead_performances %}
@@ -58,14 +64,21 @@
         </div>
     </a>
 
-    <a target="_blank" href="{{ thirdparty_resources.link }}">
-        <div class="advice block" style="background-image: url({% thumbnail thirdparty_resources.thumbnail 290x245 %})">
-            <div class="substrate"></div>
-            <h2>
-                {{ thirdparty_resources.name }}
-            </h2>
-        </div>
-    </a>
+    {% if thirdparty_resources is None %}
+        <a>
+            <div class="advice block" style="background-image: url({% static "images/performance/not-performance.png" %})">
+            </div>
+        </a>
+    {% else %}
+        <a target="_blank" href="{{ thirdparty_resources.link }}">
+            <div class="advice block" style="background-image: url({% thumbnail thirdparty_resources.thumbnail 290x245 %})">
+                <div class="substrate"></div>
+                <h2>
+                    {{ thirdparty_resources.name }}
+                </h2>
+            </div>
+        </a>
+    {% endif %}
 </div>
 
 <div class="main-info__news col-xs-6 col-sm-3">
