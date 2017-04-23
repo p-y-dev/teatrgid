@@ -24,8 +24,6 @@ def home_page(request):
 
     thirdparty_resources = ThirdpartyResources.objects.filter(city=request.city_obj).order_by('?').first()
 
-    print(thirdparty_resources)
-
     return render(request, 'home/index.html', {
         "top_today_performances": top_today_performances,
         "week_ahead_performances": week_ahead_performances,

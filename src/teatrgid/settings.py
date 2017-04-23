@@ -32,10 +32,10 @@ URL_IPGEOBASE = "http://ipgeobase.ru:7020/geo?ip="
 KEY_CITY_SESSION = "city_user"
 
 # Красноярск - 37.112.199.0
-# Новосибирск - 37.49.208.0
+# Новосибирск - 37.194.20.170
 # Москва - 5.62.157.0
 # Санкт-Петербург - 5.188.0.0
-TEST_IP = "37.49.208.0"
+TEST_IP = "37.194.20.170"
 
 # Application definition
 

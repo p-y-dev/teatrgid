@@ -37,7 +37,6 @@ class CityMiddleware(object):
             name_city_user = request.session.get(settings.KEY_CITY_SESSION)
 
             if name_city_user is None:
-                print("GEOIPPIPIPIPIPIPIPIPIP")
                 geoip = GeoIp()
                 name_city_user = geoip.get_city_geoip(request)
                 geoip.add_city_to_session(request, name_city_user)
