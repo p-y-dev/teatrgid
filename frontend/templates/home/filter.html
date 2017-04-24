@@ -29,25 +29,19 @@
                 <p>Возраст от</p>
 
                 <select name="age-from" id="age-from-filter" class="bts-select">
-                    <option>10</option>
-                    <option>18</option>
-                    <option>24</option>
-                    <option>25</option>
-                    <option>56</option>
-                    <option>65</option>
-                    <option>99</option>
+                    <option>-</option>
+                    {% for age_restrictions in list_age_restrictions %}
+                        <option value="{{ age_restrictions.age }}">{{ age_restrictions.name }}</option>
+                    {% endfor %}
                 </select>
 
                 <p class="to">до</p>
 
                 <select name="age-to" id="age-to-filter" class="bts-select">
-                    <option>10</option>
-                    <option>18</option>
-                    <option>24</option>
-                    <option>25</option>
-                    <option>56</option>
-                    <option>65</option>
-                    <option>99</option>
+                    <option>-</option>
+                    {% for age_restrictions in list_age_restrictions %}
+                        <option value="{{ age_restrictions.age }}">{{ age_restrictions.name }}</option>
+                    {% endfor %}
                 </select>
             </div>
 
@@ -60,46 +54,39 @@
         <div class="filter__row">
             <div class="filter__theaters">
                 <select name="theaters" id="theaters-filter" class="bts-select">
-                    <option>Театр</option>
-                    <option>Старый Дом</option>
-                    <option>Красный факел</option>
-                    <option>Театр оперы и балета</option>
-                    <option>Театр кукол</option>
-                    <option>Первый театр</option>
-                    <option>Театр Глобус</option>
+                    <option>Театры</option>
+                    {% for theater in theaters %}
+                        <option value="{{ theater.slug }}">
+                            {{ theater.name }}
+                        </option>
+                    {% endfor %}
                 </select>
             </div>
 
             <div class="filter__genres">
                 <select name="genres" id="genres-filter" class="bts-select">
                     <option>Жанры</option>
-                    <option>Драма</option>
-                    <option>Комедия</option>
-                    <option>Мелодрама</option>
-                    <option>Мистерия</option>
-                    <option>Монодрама</option>
-                    <option>Пастораль</option>
+                    {% for genre in genres %}
+                        <option value="{{ genre.slug }}">{{ genre.name }}</option>
+                    {% endfor %}
                 </select>
             </div>
 
             <div class="filter__actors">
                 <select name="actors" id="actors-filter" class="bts-select">
                     <option>Актеры</option>
-                    <option>Дмитрий Мазуров</option>
-                    <option>Павел Прилучный</option>
-                    <option>Алексей Вертков</option>
-                    <option>Максим Битюков</option>
-                    <option>Анатолий Солоницын</option>
+                    {% for actor in actors %}
+                        <option value="{{ actor.slug }}">{{ actor.name }}</option>
+                    {% endfor %}
                 </select>
             </div>
 
             <div class="filter__directed">
                 <select name="directed" id="directed-filter" class="bts-select">
                     <option>Режиссеры</option>
-                    <option>Абдулов Гавриил Данилович</option>
-                    <option>Бескова Вера Петровна</option>
-                    <option>Весник Евгений Яковлевич</option>
-                    <option>Визгов Михаил Алексеевич</option>
+                    {% for director in directors %}
+                        <option value="{{ director.slug }}">{{ director.name }}</option>
+                    {% endfor %}
                 </select>
             </div>
 

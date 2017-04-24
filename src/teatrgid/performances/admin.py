@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib import admin
-from datetime import datetime
+from django.utils import timezone
 
 from .models import Performance, PerformanceGallery, DatesEvent
 from .performances import RequestsPerformances
@@ -38,11 +38,10 @@ class PerformanceAdminForm(ModelForm):
 
         performances = RequestsPerformances(self.request.user.city)
         name_current_performances = self.cleaned_data['name']
-        current_date_time = datetime.now()
+        current_date_time = timezone.now()
 
         if top == TODAY:
             performances.get_top_today(current_date_time)
-
             if performances.requests.count() >= 3:
 
                 if self.current_performance_in_top(performances.requests, name_current_performances):

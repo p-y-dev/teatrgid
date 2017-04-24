@@ -80,9 +80,11 @@ class RequestsPerformances(object):
     def get_top_today(self, date_time):
         self.requests = self.request_performance_today(date_time)
         self.requests = self.requests.filter(top="today")
-        return self.requests.distinct("name")
+        self.requests = self.requests.distinct("name")
+        return self.requests
 
     def get_week_ahead(self, date_time):
         self.requests = self.request_week_ahead(date_time)
         self.requests = self.requests.filter(top="soon")
-        return self.requests.distinct("name")
+        self.requests = self.requests.distinct("name")
+        return self.requests
