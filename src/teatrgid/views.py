@@ -1,5 +1,6 @@
+import json
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.utils import timezone
 
@@ -55,3 +56,15 @@ def set_user_city(request, city_slug=None):
         geoip.add_city_to_session(request, city.name)
 
     return HttpResponseRedirect(reverse("home"))
+
+
+def filter_performances(request):
+    filter_data = json.loads(request.POST.get("filter_data"))
+
+    import pprint
+    pp = pprint.PrettyPrinter(indent=4)
+    pp.pprint(filter_data)
+
+    return JsonResponse({
+        "status": "success",
+    })

@@ -18,12 +18,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 
-from teatrgid.views import home_page, select_city, set_user_city
+from teatrgid.views import home_page, select_city, set_user_city, filter_performances
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home_page, name="home"),
     url(r'^select_city/', select_city, name="select_city"),
+    url(r'^filter_performances/', filter_performances, name="filter_performances"),
     url(r'^set_user_city/(?P<city_slug>[A-z0-9_\-]+)/$', set_user_city, name="set_user_city")
 ]
 

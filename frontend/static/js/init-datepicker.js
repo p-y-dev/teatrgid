@@ -25,5 +25,8 @@ $(document).ready(function() {
         buttonImageOnly: true,
         buttonText: "Выберите дату",
         minDate: new Date(),
+        onSelect: function(dateText, inst) {
+            addValueFilter("date="+$(this).val());
+        }
     });
 });
