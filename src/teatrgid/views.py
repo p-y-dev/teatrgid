@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, JsonResponse
 from django.template.loader import render_to_string
 from django.urls import reverse
-from datetime import datetime
+import datetime
 
 from .geoip import GeoIp
 from .thirdparty_resources.models import ThirdpartyResources
@@ -14,7 +14,7 @@ from .persons.persons import RequestsPersons
 
 
 def home_page(request):
-    current_datetime = datetime.now()
+    current_datetime = datetime.datetime.now()
     city_obj = request.city_obj
 
     performances = RequestsPerformances(city_obj)
@@ -63,20 +63,41 @@ def filter_performances(request):
     filter_data = json.loads(request.POST.get("filter_data"))
     city_obj = request.city_obj
 
+    performances_affiche = RequestsPerformances(city_obj)
+    performances_schedule = RequestsPerformances(city_obj)
+
+    context_data = {}
+
     if "date" in filter_data:
-        date = datetime.strptime(filter_data["date"], "%d.%m.%Y").date()
-        time = datetime.now().time()
-        current_datetime = datetime.combine(date, time)
+        date = datetime.datetime.strptime(filter_data["date"], "%d.%m.%Y").date()
+        time = datetime.datetime.now().time()
 
-        performances = RequestsPerformances(city_obj)
+        if date == datetime.datetime.now().date():
+            current_datetime = datetime.datetime.combine(date, time)
 
-        html_filtered_list_performances = render_to_string('home/list-performances.html', {
-            "performances_affiche": performances.get_affiche(current_datetime, day_tomorrow=False),
-            "performances_schedule": performances.get_schedule(current_datetime, day_tomorrow=False),
-            "current_date": current_datetime.date(),
-        })
+        else:
+            current_datetime = datetime.datetime.combine(date, datetime.time(0, 0, 0))
 
-        return JsonResponse({
-            "status": "success",
-            "filtered_data": html_filtered_list_performances,
-        })
+        performances_affiche.get_affiche(current_datetime, day_tomorrow=False)
+        performances_schedule.get_schedule(current_datetime, day_tomorrow=False)
+        context_data["current_date"] = current_datetime.date()
+    else:
+        current_datetime = datetime.datetime.now()
+        performances_affiche.get_affiche(current_datetime, day_tomorrow=True)
+        performances_schedule.get_schedule(current_datetime, day_tomorrow=True)
+
+    if "rating" in filter_data:
+        performances_affiche.filter_affiche_bay_rating(filter_data["rating"])
+        performances_schedule.filter_schedule_bay_rating(filter_data["rating"])
+
+    context_data["performances_affiche"] = performances_affiche.requests.distinct("name")
+    context_data["performances_schedule"] = performances_schedule.requests
+    html_filtered_list_performances = render_to_string(
+        'home/list-performances.html',
+        context_data
+    )
+
+    return JsonResponse({
+        "status": "success",
+        "filtered_data": html_filtered_list_performances,
+    })

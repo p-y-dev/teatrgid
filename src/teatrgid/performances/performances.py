@@ -88,3 +88,11 @@ class RequestsPerformances(object):
         self.requests = self.requests.filter(top="soon")
         self.requests = self.requests.distinct("name")
         return self.requests
+
+    def filter_affiche_bay_rating(self, rating):
+        self.requests = self.requests.filter(rating__gte=rating)
+        return self.requests
+
+    def filter_schedule_bay_rating(self, rating):
+        self.requests = self.requests.filter(performance__rating__gte=rating)
+        return self.requests

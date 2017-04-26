@@ -74,7 +74,14 @@
 
         <div id="list-performances-schedule" class="schedule tab-pane fade">
             <div class="row">
-                <h3 class="title-schedule">Сегодня и Завтра <i class="fa fa-calendar" aria-hidden="true"></i></h3>
+                <h3 class="title-schedule">
+                    {% if current_date %}
+                        {{ current_date }}
+                    {% else %}
+                        Сегодня и Завтра
+                    {% endif %}
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </h3>
             </div>
             <div class="schedule__desktop">
                 {% for performance_time in performances_schedule %}
