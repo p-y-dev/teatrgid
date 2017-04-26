@@ -1,8 +1,9 @@
 import json
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, JsonResponse
+from django.template.loader import render_to_string
 from django.urls import reverse
-from django.utils import timezone
+from datetime import datetime
 
 from .geoip import GeoIp
 from .thirdparty_resources.models import ThirdpartyResources
@@ -13,7 +14,7 @@ from .persons.persons import RequestsPersons
 
 
 def home_page(request):
-    current_datetime = timezone.now()
+    current_datetime = datetime.now()
     city_obj = request.city_obj
 
     performances = RequestsPerformances(city_obj)
@@ -60,11 +61,22 @@ def set_user_city(request, city_slug=None):
 
 def filter_performances(request):
     filter_data = json.loads(request.POST.get("filter_data"))
+    city_obj = request.city_obj
 
-    import pprint
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(filter_data)
+    if "date" in filter_data:
+        date = datetime.strptime(filter_data["date"], "%d.%m.%Y").date()
+        time = datetime.now().time()
+        current_datetime = datetime.combine(date, time)
 
-    return JsonResponse({
-        "status": "success",
-    })
+        performances = RequestsPerformances(city_obj)
+
+        html_filtered_list_performances = render_to_string('home/list-performances.html', {
+            "performances_affiche": performances.get_affiche(current_datetime, day_tomorrow=False),
+            "performances_schedule": performances.get_schedule(current_datetime, day_tomorrow=False),
+            "current_date": current_datetime.date(),
+        })
+
+        return JsonResponse({
+            "status": "success",
+            "filtered_data": html_filtered_list_performances,
+        })

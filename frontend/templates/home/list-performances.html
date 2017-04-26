@@ -1,7 +1,16 @@
 {% load staticfiles %}
 {% load thumbnail %}
 
+<img class="img-responsive preloader-performance" src="{% static "images/preloaders/preloader128x128.gif" %}">
 {% if performances_affiche.count == 0 %}
+    <h3 class="title-schedule">
+        {% if current_date %}
+            {{ current_date }}
+        {% else %}
+            Сегодня и Завтра
+        {% endif %}
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+    </h3>
     <h3 class="not-performances">
         В ближайшее время Вашем городе нет спектаклей
     </h3>
@@ -19,7 +28,14 @@
     <div class="tab-content">
         <div id="list-performances-poster" class="poster tab-pane fade in active">
             <div class="row">
-                <h3 class="title-schedule">Сегодня и Завтра <i class="fa fa-calendar" aria-hidden="true"></i></h3>
+                <h3 class="title-schedule">
+                    {% if current_date %}
+                        {{ current_date }}
+                    {% else %}
+                        Сегодня и Завтра
+                    {% endif %}
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </h3>
             </div>
             <div class="poster__desktop">
                 <div class="row">

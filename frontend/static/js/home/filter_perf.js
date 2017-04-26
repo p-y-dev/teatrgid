@@ -1,6 +1,7 @@
 var filter_data = {};
 
 function filterPerformances(filter_data) {
+    $(".preloader-performance").css("display", "block");
     $.ajax({
         url: "/filter_performances/",
         type: "POST",
@@ -11,9 +12,15 @@ function filterPerformances(filter_data) {
         },
 
         success: function (data) {
+            $(".preloader-performance").css("display", "none");
+
+            if (data["status"] === "success") {
+                $('.row-performances').html(data["filtered_data"]);
+            }
         },
 
         error: function () {
+            $(".preloader-performance").css("display", "none");
         }
     });
 }
