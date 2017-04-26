@@ -1,6 +1,7 @@
 var filter_data = {};
 
 function filterPerformances(filter_data) {
+    $(".row-performances").html("");
     $(".preloader-performance").css("display", "block");
     $.ajax({
         url: "/filter_performances/",
