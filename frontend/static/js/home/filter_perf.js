@@ -1,7 +1,6 @@
 var filter_data = {};
 
 function filterPerformances(filter_data) {
-    $(".row-performances").html("");
     $(".preloader-performance").css("display", "block");
     $.ajax({
         url: "/filter_performances/",
@@ -37,31 +36,59 @@ function addValueFilter(value) {
             break;
 
         case "rating":
-            filter_data.rating = json_data[value_filter_data];
+            if(json_data[value_filter_data] == 0) {
+                delete filter_data.rating
+            } else {
+                filter_data.rating = json_data[value_filter_data];
+            }
             break;
 
         case "age-from":
-            filter_data.age_from = json_data[value_filter_data];
+            if(json_data[value_filter_data] == 0) {
+                delete filter_data.age_from
+            } else {
+                filter_data.age_from = json_data[value_filter_data];
+            }
             break;
 
         case "age-to":
-            filter_data.age_to = json_data[value_filter_data];
+            if(json_data[value_filter_data] == 0) {
+                delete filter_data.age_to
+            } else {
+                filter_data.age_to = json_data[value_filter_data];
+            }
             break;
 
         case "theaters":
-            filter_data.theaters = json_data[value_filter_data];
+            if(json_data[value_filter_data] == "") {
+                delete filter_data.theaters
+            } else {
+                filter_data.theaters = json_data[value_filter_data];
+            }
             break;
 
         case "genres":
-            filter_data.genres = json_data[value_filter_data];
+            if(json_data[value_filter_data] == "") {
+                delete filter_data.genres
+            } else {
+                filter_data.genres = json_data[value_filter_data];
+            }
             break;
 
         case "actors":
-            filter_data.actors = json_data[value_filter_data];
+            if(json_data[value_filter_data] == "") {
+                delete filter_data.actors
+            } else {
+                filter_data.actors = json_data[value_filter_data];
+            }
             break;
 
         case "directed":
-            filter_data.directed = json_data[value_filter_data];
+            if(json_data[value_filter_data] == "") {
+                delete filter_data.directors
+            } else {
+                filter_data.directors = json_data[value_filter_data];
+            }
             break;
     }
 

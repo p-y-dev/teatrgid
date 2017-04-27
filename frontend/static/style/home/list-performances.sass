@@ -2,10 +2,18 @@
 @import "../fonts.css"
 
 .preloader-performance
+    position: absolute
     margin: auto
-    margin-top: 100px
-    margin-bottom: 100px
+    margin-left: -32px
+    left: 50%
     display: none
+
+    @media(max-width: 991px)
+        margin-left: -50px
+
+    @media(max-width: 768px)
+        width: 36px
+        margin-left: -18px
 
 .title-schedule
     text-align: center

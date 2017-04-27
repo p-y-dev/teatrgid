@@ -96,3 +96,51 @@ class RequestsPerformances(object):
     def filter_schedule_bay_rating(self, rating):
         self.requests = self.requests.filter(performance__rating__gte=rating)
         return self.requests
+
+    def filter_affiche_bay_age_from(self, age_from):
+        self.requests = self.requests.filter(age_restrictions__age__gte=age_from)
+        return self.requests
+
+    def filter_schedule_bay_age_from(self, age_from):
+        self.requests = self.requests.filter(performance__age_restrictions__age__gte=age_from)
+        return self.requests
+
+    def filter_affiche_bay_age_to(self, age_to):
+        self.requests = self.requests.filter(age_restrictions__age__lte=age_to)
+        return self.requests
+
+    def filter_schedule_bay_age_to(self, age_to):
+        self.requests = self.requests.filter(performance__age_restrictions__age__lte=age_to)
+        return self.requests
+
+    def filter_affiche_bay_theaters(self, theaters):
+        self.requests = self.requests.filter(theater__slug=theaters)
+        return self.requests
+
+    def filter_schedule_bay_theaters(self, theaters):
+        self.requests = self.requests.filter(performance__theater__slug=theaters)
+        return self.requests
+
+    def filter_affiche_bay_genres(self, genres):
+        self.requests = self.requests.filter(genres__slug=genres)
+        return self.requests
+
+    def filter_schedule_bay_genres(self, genres):
+        self.requests = self.requests.filter(performance__genres__slug=genres)
+        return self.requests
+
+    def filter_affiche_bay_actors(self, actors):
+        self.requests = self.requests.filter(actors__slug=actors)
+        return self.requests
+
+    def filter_schedule_bay_actors(self, actors):
+        self.requests = self.requests.filter(performance__actors__slug=actors)
+        return self.requests
+
+    def filter_affiche_bay_directors(self, directors):
+        self.requests = self.requests.filter(directors__slug=directors)
+        return self.requests
+
+    def filter_schedule_bay_directors(self, directors):
+        self.requests = self.requests.filter(performance__directors__slug=directors)
+        return self.requests

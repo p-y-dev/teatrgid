@@ -12,7 +12,7 @@
             <div class="filter__rating">
                 <p>Рэйтинг от</p>
                 <select name="rating" id="rating-filter" class="bts-select">
-                    <option>-</option>
+                    <option value="0">-</option>
                     <option value="1.0">1</option>
                     <option value="2.0">2</option>
                     <option value="3.0">3</option>
@@ -30,7 +30,7 @@
                 <p>Возраст от</p>
 
                 <select name="age-from" id="age-from-filter" class="bts-select">
-                    <option>-</option>
+                    <option value="0">-</option>
                     {% for age_restrictions in list_age_restrictions %}
                         <option value="{{ age_restrictions.age }}">{{ age_restrictions.name }}</option>
                     {% endfor %}
@@ -39,7 +39,7 @@
                 <p class="to">до</p>
 
                 <select name="age-to" id="age-to-filter" class="bts-select">
-                    <option>-</option>
+                    <option value="0">-</option>
                     {% for age_restrictions in list_age_restrictions %}
                         <option value="{{ age_restrictions.age }}">{{ age_restrictions.name }}</option>
                     {% endfor %}
@@ -57,7 +57,7 @@
         <div class="filter__row">
             <div class="filter__theaters">
                 <select name="theaters" id="theaters-filter" class="bts-select">
-                    <option>Театры</option>
+                    <option value="">Театры (все)</option>
                     {% for theater in theaters %}
                         <option value="{{ theater.slug }}">
                             {{ theater.name }}
@@ -68,7 +68,7 @@
 
             <div class="filter__genres">
                 <select name="genres" id="genres-filter" class="bts-select">
-                    <option>Жанры</option>
+                    <option value="">Жанры (все)</option>
                     {% for genre in genres %}
                         <option value="{{ genre.slug }}">{{ genre.name }}</option>
                     {% endfor %}
@@ -77,7 +77,7 @@
 
             <div class="filter__actors">
                 <select name="actors" id="actors-filter" class="bts-select">
-                    <option>Актеры</option>
+                    <option value="">Актеры (все)</option>
                     {% for actor in actors %}
                         <option value="{{ actor.slug }}">{{ actor.name }}</option>
                     {% endfor %}
@@ -86,7 +86,7 @@
 
             <div class="filter__directed">
                 <select name="directed" id="directed-filter" class="bts-select">
-                    <option>Режиссеры</option>
+                    <option value="">Режиссеры (все)</option>
                     {% for director in directors %}
                         <option value="{{ director.slug }}">{{ director.name }}</option>
                     {% endfor %}

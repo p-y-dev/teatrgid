@@ -90,6 +90,30 @@ def filter_performances(request):
         performances_affiche.filter_affiche_bay_rating(filter_data["rating"])
         performances_schedule.filter_schedule_bay_rating(filter_data["rating"])
 
+    if "age_from" in filter_data:
+        performances_affiche.filter_affiche_bay_age_from(filter_data["age_from"])
+        performances_schedule.filter_schedule_bay_age_from(filter_data["age_from"])
+
+    if "age_to" in filter_data:
+        performances_affiche.filter_affiche_bay_age_to(filter_data["age_to"])
+        performances_schedule.filter_schedule_bay_age_to(filter_data["age_to"])
+
+    if "theaters" in filter_data:
+        performances_affiche.filter_affiche_bay_theaters(filter_data["theaters"])
+        performances_schedule.filter_schedule_bay_theaters(filter_data["theaters"])
+
+    if "genres" in filter_data:
+        performances_affiche.filter_affiche_bay_genres(filter_data["genres"])
+        performances_schedule.filter_schedule_bay_genres(filter_data["genres"])
+
+    if "actors" in filter_data:
+        performances_affiche.filter_affiche_bay_actors(filter_data["actors"])
+        performances_schedule.filter_schedule_bay_actors(filter_data["actors"])
+
+    if "directors" in filter_data:
+        performances_affiche.filter_affiche_bay_directors(filter_data["directors"])
+        performances_schedule.filter_schedule_bay_directors(filter_data["directors"])
+
     context_data["performances_affiche"] = performances_affiche.requests.distinct("name")
     context_data["performances_schedule"] = performances_schedule.requests
     html_filtered_list_performances = render_to_string(
