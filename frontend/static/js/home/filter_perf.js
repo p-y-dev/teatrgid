@@ -60,7 +60,7 @@ function addValueFilter(value) {
             break;
 
         case "theaters":
-            if(json_data[value_filter_data] == "") {
+            if(json_data[value_filter_data] == 0) {
                 delete filter_data.theaters
             } else {
                 filter_data.theaters = json_data[value_filter_data];
@@ -68,7 +68,7 @@ function addValueFilter(value) {
             break;
 
         case "genres":
-            if(json_data[value_filter_data] == "") {
+            if(json_data[value_filter_data] == 0) {
                 delete filter_data.genres
             } else {
                 filter_data.genres = json_data[value_filter_data];
@@ -76,7 +76,7 @@ function addValueFilter(value) {
             break;
 
         case "actors":
-            if(json_data[value_filter_data] == "") {
+            if(json_data[value_filter_data] == 0) {
                 delete filter_data.actors
             } else {
                 filter_data.actors = json_data[value_filter_data];
@@ -84,7 +84,7 @@ function addValueFilter(value) {
             break;
 
         case "directed":
-            if(json_data[value_filter_data] == "") {
+            if(json_data[value_filter_data] == 0) {
                 delete filter_data.directors
             } else {
                 filter_data.directors = json_data[value_filter_data];
@@ -95,7 +95,21 @@ function addValueFilter(value) {
     filterPerformances(filter_data);
 }
 
+
+function clear_filter() {
+    $("#filter-form").submit(function(e){
+        e.preventDefault();
+        $('.bts-select').val(0);
+        $('.bts-select').selectpicker('refresh');
+        $(datepicker_obj).datepicker('setDate', null);
+        filter_data = {};
+        filterPerformances(filter_data);
+    });
+}
+
 $(document).ready(function () {
+    clear_filter();
+
     $("#rating-filter").change(function () {
         addValueFilter("rating=" + $(this).val());
     });

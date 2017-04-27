@@ -1,3 +1,5 @@
+var datepicker_obj = $("#datepicker");
+
 $(document).ready(function() {
     $.datepicker.regional['ru'] = {
         closeText: 'Закрыть',
@@ -18,7 +20,7 @@ $(document).ready(function() {
 
     $.datepicker.setDefaults($.datepicker.regional['ru']);
 
-    $("#datepicker").datepicker({
+    datepicker_obj.datepicker({
         altFormat: "dd.mm.yy",
         showOn: "button",
         buttonImage: "/static/images/datepicker/date.png",

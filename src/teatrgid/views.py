@@ -68,54 +68,64 @@ def filter_performances(request):
 
     context_data = {}
 
-    if "date" in filter_data:
-        date = datetime.datetime.strptime(filter_data["date"], "%d.%m.%Y").date()
-        time = datetime.datetime.now().time()
+    if len(filter_data) > 0:
 
-        if date == datetime.datetime.now().date():
-            current_datetime = datetime.datetime.combine(date, time)
+        if "date" in filter_data:
+            date = datetime.datetime.strptime(filter_data["date"], "%d.%m.%Y").date()
+            time = datetime.datetime.now().time()
 
+            if date == datetime.datetime.now().date():
+                current_datetime = datetime.datetime.combine(date, time)
+
+            else:
+                current_datetime = datetime.datetime.combine(date, datetime.time(0, 0, 0))
+
+            performances_affiche.get_affiche(current_datetime, day_tomorrow=False)
+            performances_schedule.get_schedule(current_datetime, day_tomorrow=False)
+            context_data["current_date"] = current_datetime.date()
         else:
-            current_datetime = datetime.datetime.combine(date, datetime.time(0, 0, 0))
+            current_datetime = datetime.datetime.now()
+            performances_affiche.get_affiche(current_datetime, day_tomorrow=True)
+            performances_schedule.get_schedule(current_datetime, day_tomorrow=True)
 
-        performances_affiche.get_affiche(current_datetime, day_tomorrow=False)
-        performances_schedule.get_schedule(current_datetime, day_tomorrow=False)
-        context_data["current_date"] = current_datetime.date()
+        if "rating" in filter_data:
+            performances_affiche.filter_affiche_bay_rating(filter_data["rating"])
+            performances_schedule.filter_schedule_bay_rating(filter_data["rating"])
+
+        if "age_from" in filter_data:
+            performances_affiche.filter_affiche_bay_age_from(filter_data["age_from"])
+            performances_schedule.filter_schedule_bay_age_from(filter_data["age_from"])
+
+        if "age_to" in filter_data:
+            performances_affiche.filter_affiche_bay_age_to(filter_data["age_to"])
+            performances_schedule.filter_schedule_bay_age_to(filter_data["age_to"])
+
+        if "theaters" in filter_data:
+            performances_affiche.filter_affiche_bay_theaters(filter_data["theaters"])
+            performances_schedule.filter_schedule_bay_theaters(filter_data["theaters"])
+
+        if "genres" in filter_data:
+            performances_affiche.filter_affiche_bay_genres(filter_data["genres"])
+            performances_schedule.filter_schedule_bay_genres(filter_data["genres"])
+
+        if "actors" in filter_data:
+            performances_affiche.filter_affiche_bay_actors(filter_data["actors"])
+            performances_schedule.filter_schedule_bay_actors(filter_data["actors"])
+
+        if "directors" in filter_data:
+            performances_affiche.filter_affiche_bay_directors(filter_data["directors"])
+            performances_schedule.filter_schedule_bay_directors(filter_data["directors"])
+
+        context_data["performances_affiche"] = performances_affiche.requests.distinct("name")
+        context_data["performances_schedule"] = performances_schedule.requests
+
     else:
         current_datetime = datetime.datetime.now()
         performances_affiche.get_affiche(current_datetime, day_tomorrow=True)
         performances_schedule.get_schedule(current_datetime, day_tomorrow=True)
+        context_data["performances_affiche"] = performances_affiche.requests.distinct("name")
+        context_data["performances_schedule"] = performances_schedule.requests
 
-    if "rating" in filter_data:
-        performances_affiche.filter_affiche_bay_rating(filter_data["rating"])
-        performances_schedule.filter_schedule_bay_rating(filter_data["rating"])
-
-    if "age_from" in filter_data:
-        performances_affiche.filter_affiche_bay_age_from(filter_data["age_from"])
-        performances_schedule.filter_schedule_bay_age_from(filter_data["age_from"])
-
-    if "age_to" in filter_data:
-        performances_affiche.filter_affiche_bay_age_to(filter_data["age_to"])
-        performances_schedule.filter_schedule_bay_age_to(filter_data["age_to"])
-
-    if "theaters" in filter_data:
-        performances_affiche.filter_affiche_bay_theaters(filter_data["theaters"])
-        performances_schedule.filter_schedule_bay_theaters(filter_data["theaters"])
-
-    if "genres" in filter_data:
-        performances_affiche.filter_affiche_bay_genres(filter_data["genres"])
-        performances_schedule.filter_schedule_bay_genres(filter_data["genres"])
-
-    if "actors" in filter_data:
-        performances_affiche.filter_affiche_bay_actors(filter_data["actors"])
-        performances_schedule.filter_schedule_bay_actors(filter_data["actors"])
-
-    if "directors" in filter_data:
-        performances_affiche.filter_affiche_bay_directors(filter_data["directors"])
-        performances_schedule.filter_schedule_bay_directors(filter_data["directors"])
-
-    context_data["performances_affiche"] = performances_affiche.requests.distinct("name")
-    context_data["performances_schedule"] = performances_schedule.requests
     html_filtered_list_performances = render_to_string(
         'home/list-performances.html',
         context_data

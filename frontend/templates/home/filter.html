@@ -57,7 +57,7 @@
         <div class="filter__row">
             <div class="filter__theaters">
                 <select name="theaters" id="theaters-filter" class="bts-select">
-                    <option value="">Театры (все)</option>
+                    <option value="0">Театры (все)</option>
                     {% for theater in theaters %}
                         <option value="{{ theater.slug }}">
                             {{ theater.name }}
@@ -68,7 +68,7 @@
 
             <div class="filter__genres">
                 <select name="genres" id="genres-filter" class="bts-select">
-                    <option value="">Жанры (все)</option>
+                    <option value="0">Жанры (все)</option>
                     {% for genre in genres %}
                         <option value="{{ genre.slug }}">{{ genre.name }}</option>
                     {% endfor %}
@@ -77,7 +77,7 @@
 
             <div class="filter__actors">
                 <select name="actors" id="actors-filter" class="bts-select">
-                    <option value="">Актеры (все)</option>
+                    <option value="0">Актеры (все)</option>
                     {% for actor in actors %}
                         <option value="{{ actor.slug }}">{{ actor.name }}</option>
                     {% endfor %}
@@ -86,7 +86,7 @@
 
             <div class="filter__directed">
                 <select name="directed" id="directed-filter" class="bts-select">
-                    <option value="">Режиссеры (все)</option>
+                    <option value="0">Режиссеры (все)</option>
                     {% for director in directors %}
                         <option value="{{ director.slug }}">{{ director.name }}</option>
                     {% endfor %}
