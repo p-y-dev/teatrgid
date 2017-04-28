@@ -30,13 +30,20 @@
                 {% include "home/main-information.html" %}
             </div>
 
-            <div class="row">
-                <div class="col-xs-12 advertising">
-                    <a href="#">
-                        <p>каждую неделю мы рассказываем о главных спектаклях</p>
+            {% if advertising %}
+                <div class="row">
+                    <a target="_blank" href="{{ advertising.link }}">
+                            {% if advertising.thumbnail == "" %}
+                            <div class="col-xs-12 advertising advertising-text">
+                                <p>{{ advertising.name }}</p>
+                            {% else %}
+                            <div class="col-xs-12 advertising advertising-img">
+                                <img src="{{ advertising.thumbnail.url }}" class="img-responsive">
+                            {% endif %}
+                        </div>
                     </a>
                 </div>
-            </div>
+            {% endif %}
 
             <div class="row">
                 {% include "home/filter.html" %}

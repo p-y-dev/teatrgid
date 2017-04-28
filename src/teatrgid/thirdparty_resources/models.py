@@ -14,6 +14,8 @@ class CurrentResourcesClass(models.Model):
     thumbnail = models.ImageField(
         verbose_name="Миниатюра",
         upload_to='img/thumbnail/',
+        blank=True,
+        default="",
     )
 
     link = models.CharField(

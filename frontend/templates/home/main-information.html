@@ -28,13 +28,13 @@
 </div>
 
 <div class="main-info__soon col-xs-6 col-sm-3">
-    {% if week_ahead_performances.count == 0  %}
+    {% if top_week_ahead_performances.count == 0  %}
         <div class="block" style="background-image: url({% static "images/performance/not-performance.png" %})">
             <div class="substrate not-active"></div>
         </div>
     {% else %}
-        <div class="is-top-week-ahead-perf" data-count="{{ week_ahead_performances.count }}"></div>
-        {% for top_performance in week_ahead_performances %}
+        <div class="is-top-week-ahead-perf" data-count="{{ top_week_ahead_performances.count }}"></div>
+        {% for top_performance in top_week_ahead_performances %}
             {% if forloop.first %}
                 <a class="top-week-ahead-performance" id="top-week-ahead-perf-{{ forloop.counter0 }}" href="#">
             {% else %}

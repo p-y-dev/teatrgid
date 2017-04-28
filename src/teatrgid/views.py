@@ -6,7 +6,7 @@ from django.urls import reverse
 import datetime
 
 from .geoip import GeoIp
-from .thirdparty_resources.models import ThirdpartyResources
+from .thirdparty_resources.models import ThirdpartyResources, Advertising
 from .performances.performances import RequestsPerformances
 from .general_information.models import ListCity, ListAgeRestrictions, ListGenres
 from .theaters.theaters import RequestsTheaters
@@ -21,7 +21,7 @@ def home_page(request):
     top_today_performances = performances.get_top_today(current_datetime)
 
     performances = RequestsPerformances(city_obj)
-    week_ahead_performances = performances.get_week_ahead(current_datetime)
+    top_week_ahead_performances = performances.get_week_ahead(current_datetime)
 
     performances = RequestsPerformances(city_obj)
 
@@ -29,10 +29,11 @@ def home_page(request):
 
     return render(request, 'home/index.html', {
         "top_today_performances": top_today_performances,
-        "week_ahead_performances": week_ahead_performances,
+        "top_week_ahead_performances": top_week_ahead_performances,
         "performances_affiche": performances.get_affiche(current_datetime, day_tomorrow=True),
         "performances_schedule": performances.get_schedule(current_datetime, day_tomorrow=True),
         "thirdparty_resources": ThirdpartyResources.objects.filter(city=city_obj).order_by('?').first(),
+        "advertising": Advertising.objects.filter(city=city_obj).order_by('?').first(),
         "list_age_restrictions": ListAgeRestrictions.objects.all().order_by('age'),
         "theaters": RequestsTheaters(city_obj).request_theaters(),
         "genres": ListGenres.objects.all(),
