@@ -2,10 +2,9 @@ from django.db import models
 from ..general_information.models import ListCity
 
 
-class ThirdpartyResources(models.Model):
+class CurrentResourcesClass(models.Model):
     class Meta:
-        verbose_name_plural = "Сторонние ресуры"
-        verbose_name = "Сторонние ресуры"
+        abstract = True
 
     name = models.CharField(
         verbose_name="Название",
@@ -30,3 +29,15 @@ class ThirdpartyResources(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ThirdpartyResources(CurrentResourcesClass):
+    class Meta:
+        verbose_name_plural = "Сторонние ресуры"
+        verbose_name = "Сторонние ресуры"
+
+
+class Advertising(CurrentResourcesClass):
+    class Meta:
+        verbose_name_plural = "Реклама"
+        verbose_name = "Реклама"
