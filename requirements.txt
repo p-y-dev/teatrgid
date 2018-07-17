@@ -2,6 +2,7 @@ Django
 libsass
 django-compressor
 psycopg2
+psycopg2-binary
 django-autoslug
 singlemodeladmin
 Unidecode
